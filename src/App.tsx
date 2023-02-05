@@ -12,7 +12,7 @@ const Layout = styled.div`
 `
 
 const Main = styled.main`
-  background-color: green;
+
 `
 
 export function App() {
