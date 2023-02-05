@@ -1,23 +1,23 @@
 import styled from "styled-components/macro"
+import userIcon from 'Assets/usuario.svg'
 
 export const Header = styled.header`
-  width: 100%;
   position: fixed;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  background-color: #fff;
   top: 0;
-  height: 4rem;
-  background-color: red;
-`
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  `
 
 export const Navigation = styled.nav`
+  height: 4rem;
   display: flex;
+  padding: 0 1rem;
   justify-content: space-between;
   align-items: center;
 
   .logo {
-    padding: 0.5rem 0;
+    padding: .5rem 0;
   }
 
   .login {
@@ -31,7 +31,9 @@ export const Navigation = styled.nav`
     display: inline-block;
     width: 14px;
     height: 17px;
-    background: url('Assets/usuario.svg') no-repeat center center;
+    background: url(${userIcon}) no-repeat center center;
     margin-left: 0.5rem;
+    position: relative;
+    top: -1px;
   }
 `
