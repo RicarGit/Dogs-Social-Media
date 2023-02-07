@@ -1,7 +1,7 @@
 import * as S from './Header.styled'
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as Dogs } from 'Assets/dogs.svg'
+import { ReactComponent as Dogs } from 'assets/dogs.svg'
 
 export const Header = () => {
   return (

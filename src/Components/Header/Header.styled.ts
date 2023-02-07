@@ -1,5 +1,5 @@
 import styled from "styled-components/macro"
-import userIcon from 'Assets/usuario.svg'
+import userIcon from 'assets/usuario.svg'
 
 export const Header = styled.header`
   position: fixed;
