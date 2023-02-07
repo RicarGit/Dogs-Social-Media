@@ -9,22 +9,19 @@ export const LoginForm = () => {
   const username = useForm('email')
   const password = useForm('password')
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
     if (username.validate() && password.validate()) {
-      fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
+      const { url, options } = api.TOKEN_POST({
+        username: username.value,
+        password: password.value
       })
-        .then(response => {
-          console.log(response)
-          return response.json
-        })
-        .catch(error => console.log(error))
+
+      const response = await fetch(url, options)
+      const data = await response.json()
+
+      return data
     }
   }
 
