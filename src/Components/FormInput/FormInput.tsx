@@ -6,10 +6,13 @@ interface Input {
   labelText: string
   type: string
   value: string
+  error: string | null
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onBlur: () => boolean
+  validate: () => boolean
 }
 
-export const FormInput = ({ name, labelText, type, value, onChange }: Input) => {
+export const FormInput = ({ name, labelText, type, value, onChange, onBlur, error }: Input) => {
   return (
     <S.InputContainer>
       <S.Label htmlFor={name}>{labelText}</S.Label>
@@ -19,9 +22,10 @@ export const FormInput = ({ name, labelText, type, value, onChange }: Input) => 
         type={type}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         required
       />
-      <S.ErrorMessage className='hidden'>Error</S.ErrorMessage>
+      {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
     </S.InputContainer>
   )
 }

@@ -33,8 +33,4 @@ export const ErrorMessage = styled.p`
   color: #f31;
   font-size: .875rem;
   margin-top: .25rem;
-
-  &.hidden {
-    /* display: none; */
-  }
 `
