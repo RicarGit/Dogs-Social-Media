@@ -1,13 +1,45 @@
 import * as S from './LoginForm.styled'
 import { Link } from 'react-router-dom'
-import { FormEvent } from 'react'
-import { useForm } from 'Hooks/useForm'
+import { FormEvent, useEffect } from 'react'
+
+import { useForm } from 'hooks/useForm'
+import { api } from 'services/api'
 
 import { FormInput } from 'Components/FormInput'
+
+// interface FetchData {
+//   token: string
+//   user_display_name: string
+//   user_email: string
+//   user_nicename: string
+// }
+
+const setStorageToken = (token: string) => {
+  window.localStorage.setItem('token', token)
+}
+
+const getStorageToken = () => {
+  return window.localStorage.getItem('token')
+}
 
 export const LoginForm = () => {
   const username = useForm('email')
   const password = useForm('password')
+
+  useEffect(() => {
+    const token = getStorageToken()
+    if (token) {
+      getUserData(token)
+    }
+  }, [])
+
+  const getUserData = async (token: string) => {
+    const { url, options } = api.USER_GET(token)
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+    return data
+  }
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
@@ -20,6 +52,7 @@ export const LoginForm = () => {
 
       const response = await fetch(url, options)
       const data = await response.json()
+      setStorageToken(data.token)
 
       return data
     }
