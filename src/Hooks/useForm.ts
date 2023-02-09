@@ -9,10 +9,7 @@ interface Type {
   errorMessage: string
 }
 
-interface Types {
-  email: Type
-  password: Type
-}
+type Types = Record<'email' | 'password', Type>
 
 const types: Types = {
   email: {
