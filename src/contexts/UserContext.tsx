@@ -15,7 +15,11 @@ interface UserData {
 
 interface ContextData {
   userLogin: (username: string, password: string) => Promise<void>
+  userLogout: () => void
   data: UserData | null
+  login: boolean
+  loading: boolean
+  error: string | null
 }
 
 export const UserContext = createContext<ContextData | null>(null)
@@ -107,7 +111,14 @@ export const UserContextProvider = ({ children }: Children) => {
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, data }}>
+    <UserContext.Provider value={{
+      userLogin,
+      userLogout,
+      data,
+      login,
+      loading,
+      error
+    }}>
       {children}
     </UserContext.Provider>
   )
