@@ -29,9 +29,20 @@ const getStorageToken = () => {
 
 export const UserContextProvider = ({ children }: Children) => {
   const [data, setData] = useState<UserData | null>(null)
-  const [login, setLogin] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [login, setLogin] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const navigate = useNavigate()
+
+  const userLogout = useCallback(() => {
+    setData(null)
+    setError(null)
+    setLoading(false)
+    setLogin(false)
+    window.localStorage.removeItem('token')
+    navigate('/login')
+  }, [navigate])
 
   const getUserData = async (token: string) => {
     const { url, options } = api.USER_GET(token)
@@ -57,6 +68,7 @@ export const UserContextProvider = ({ children }: Children) => {
       const { token } = await tokenResponse.json()
       setStorageToken(token)
       getUserData(token)
+      navigate('/conta')
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message)
