@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useEffect, useState, useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import { api } from "services/api"
 
 interface Children {
@@ -43,6 +44,32 @@ export const UserContextProvider = ({ children }: Children) => {
     window.localStorage.removeItem('token')
     navigate('/login')
   }, [navigate])
+
+  useEffect(() => {
+    const autoLogin = async () => {
+      const token = getStorageToken()
+
+      if (token) {
+        try {
+          setError(null)
+          setLoading(true)
+          const { url, options } = api.TOKEN_VALIDATE_POST(token)
+          const response = await fetch(url, options)
+
+          if (!response.ok) {
+            throw new Error('Token inválido.')
+          }
+
+          getUserData(token)
+          setLoading(false)
+        } catch (error) {
+          userLogout()
+        }
+      }
+    }
+
+    autoLogin()
+  }, [userLogout])
 
   const getUserData = async (token: string) => {
     const { url, options } = api.USER_GET(token)
