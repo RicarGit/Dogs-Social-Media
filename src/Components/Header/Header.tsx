@@ -14,10 +14,14 @@ export const Header = () => {
         <Link className="logo" to="/" aria-label="Dogs - Home">
           <Dogs />
         </Link>
-        {context ? (
-          <Link className="login" to="/conta">{context.data?.nome}</Link>
+
+        {context?.data ? (
+          <Link className="login" to="/conta">
+            {context.data?.nome}
+            <S.LogoutButton onClick={context.userLogout}>Sair</S.LogoutButton>
+          </Link>
         ) : (
-          <Link className="login" to="/login">'Login / Criar'</Link>
+          <Link className="login" to="/login">Login / Criar</Link>
         )}
 
       </S.Navigation>

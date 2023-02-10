@@ -37,3 +37,7 @@ export const Navigation = styled.nav`
     top: -1px;
   }
 `
+
+export const LogoutButton = styled.button`
+
+`
