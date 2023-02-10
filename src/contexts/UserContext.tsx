@@ -44,12 +44,27 @@ export const UserContextProvider = ({ children }: Children) => {
   }
 
   const userLogin = async (username: string, password: string) => {
-    const { url, options } = api.TOKEN_POST({ username: username, password: password })
-    const tokenResponse = await fetch(url, options)
-    const { token } = await tokenResponse.json()
+    try {
+      setError(null)
+      setLoading(true)
+      const { url, options } = api.TOKEN_POST({ username: username, password: password })
+      const tokenResponse = await fetch(url, options)
 
-    setStorageToken(token)
-    getUserData(token)
+      if (!tokenResponse.ok) {
+        throw new Error(`Error: ${tokenResponse.statusText}`)
+      }
+
+      const { token } = await tokenResponse.json()
+      setStorageToken(token)
+      getUserData(token)
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message)
+        setLogin(false)
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
