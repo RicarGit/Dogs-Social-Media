@@ -23,7 +23,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <section>
+    <S.LoginSection className='animeLeft'>
       <h1>Login</h1>
 
       <S.LoginForm action='' onSubmit={handleSubmit}>
@@ -39,10 +39,14 @@ export const LoginForm = () => {
           labelText='Senha'
           {...password}
         />
-        <S.LoginButton>Entrar</S.LoginButton>
+        {context?.loading ?
+          <S.LoginButton disabled>Carregando...</S.LoginButton> :
+          <S.LoginButton>Entrar</S.LoginButton>
+        }
+        {context?.error && <p>{context.error}</p>}
       </S.LoginForm>
 
-      <Link to={'criar'}></Link>
-    </section>
+      <Link to={'criar'}>Cadastro</Link>
+    </S.LoginSection>
   )
 }

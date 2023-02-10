@@ -1,5 +1,13 @@
 import styled from "styled-components/macro"
 
+export const LoginSection = styled.section`
+  &.animeLeft {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: animeLeft .3s forwards;
+  }
+`
+
 export const LoginForm = styled.form`
   
 `
