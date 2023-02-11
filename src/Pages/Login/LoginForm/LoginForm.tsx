@@ -7,6 +7,7 @@ import { UserContext } from 'contexts/UserContext'
 import { useForm } from 'hooks/useForm'
 
 import { FormInput } from 'Components/FormInput'
+import { Error } from 'Components/Error'
 import { Button } from 'Components/Button'
 
 export const LoginForm = () => {
@@ -44,7 +45,7 @@ export const LoginForm = () => {
           <Button disabled={true}>Carregando...</Button> :
           <Button>Entrar</Button>
         }
-        {context?.error && <p>{context.error}</p>}
+        <Error error={context!.error} />
       </S.LoginForm>
 
       <Link to={'criar'}>Cadastro</Link>
