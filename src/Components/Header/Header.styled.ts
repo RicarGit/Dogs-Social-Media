@@ -2,14 +2,17 @@ import styled from "styled-components/macro"
 import userIcon from 'assets/usuario.svg'
 
 export const Header = styled.header`
+  width: 100%;
   position: fixed;
   top: 0;
-  width: 100%;
-  max-width: 800px;
+  background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  z-index: 1;
   `
 
 export const Navigation = styled.nav`
+  margin: 0 auto;
+  max-width: 800px;
   height: 4rem;
   display: flex;
   padding: 0 1rem;
