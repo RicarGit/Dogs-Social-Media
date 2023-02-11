@@ -14,12 +14,14 @@ export const Login = () => {
 
   return (
     <S.Login>
-      <Routes>
-        <Route path='/' element={<LoginForm />} />
-        <Route path='criar' element={<LoginCreate />} />
-        <Route path='perdeu' element={<LoginPasswordLost />} />
-        <Route path='resetar' element={<LoginPasswordReset />} />
-      </Routes>
+      <S.FormsContainer>
+        <Routes>
+          <Route path='/' element={<LoginForm />} />
+          <Route path='criar' element={<LoginCreate />} />
+          <Route path='perdeu' element={<LoginPasswordLost />} />
+          <Route path='resetar' element={<LoginPasswordReset />} />
+        </Routes>
+      </S.FormsContainer>
     </S.Login>
   )
 }

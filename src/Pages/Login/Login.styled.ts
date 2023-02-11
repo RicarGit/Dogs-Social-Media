@@ -1,5 +1,33 @@
 import styled from "styled-components/macro"
+import bgDogLogin from 'assets/login.jpg'
 
-export const Login = styled.div`
+export const Login = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  gap: 2rem;
 
+  &::before {
+    content: '';
+    display: block;
+    background: url(${bgDogLogin}) no-repeat top;
+    background-size: contain;
+  }
+
+  @media (max-width: 50rem) {
+    grid-template-columns: 1fr;
+
+    &::before {
+      display: none;
+    }
+  }
+`
+
+export const FormsContainer = styled.div`
+  max-width: 30rem;
+  padding: 1rem;
+
+  @media (max-width: 50rem) {
+    max-width: 100%;
+  }
 `
