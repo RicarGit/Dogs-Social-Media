@@ -25,7 +25,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <S.LoginSection className='animeLeft'>
+    <S.LoginFormContainer className='animeLeft'>
       <h1>Login</h1>
 
       <S.LoginForm action='' onSubmit={handleSubmit}>
@@ -48,7 +48,14 @@ export const LoginForm = () => {
         <Error error={context!.error} />
       </S.LoginForm>
 
-      <Link to={'criar'}>Cadastro</Link>
-    </S.LoginSection>
+      <Link className='lostAccount' to={'perdeu'}>Perdeu a Senha?</Link>
+      <S.Register>
+        <h2>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <Button>
+          <Link className='createAccount' to={'criar'}>Cadastro</Link>
+        </Button>
+      </S.Register>
+    </S.LoginFormContainer>
   )
 }

@@ -1,39 +1,52 @@
 import styled from "styled-components/macro"
 
-export const LoginSection = styled.section`
+export const LoginFormContainer = styled.div`
   &.animeLeft {
     opacity: 0;
     transform: translateX(-50px);
     animation: animeLeft .3s forwards;
+
+  .lostAccount {
+    display: inline-block;
+    color: #666;
+    padding: .5rem 0;
+    line-height: 1;
+
+    &::after {
+      content: '';
+      height: 2px;
+      width: 100%;
+      display: block;
+      background-color: currentColor;
+    }
   }
+}
 `
 
 export const LoginForm = styled.form`
-  
+  margin-bottom: 2rem;
 `
 
-export const LoginButton = styled.button`
-  min-width: 8rem;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  font-family: var(--type-first);
-  border: none;
-  border-radius: .4rem;
-  background-color: #fb1;
-  color: #764701;
-  cursor: pointer;
-  transition: .15s;
+export const Register = styled.div`
+  margin-top: 4rem;
 
-  &:hover,
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #fea,
-                0 0 0 4px #fb1;
+  p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
-  &:disabled {
-    opacity: .5;
-    box-shadow: none;
-    cursor: wait;
+  h2 {
+    font-family: var(--type-second);
+    line-height: 1;
+    font-size: 2rem;
+
+    &::after {
+      content: '';
+      display: block;
+      background-color: #ddd;
+      height: .5rem;
+      width: 3rem;
+      border-radius: .2rem;
+    }
   }
 `
