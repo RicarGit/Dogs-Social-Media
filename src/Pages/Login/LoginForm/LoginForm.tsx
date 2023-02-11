@@ -7,6 +7,7 @@ import { UserContext } from 'contexts/UserContext'
 import { useForm } from 'hooks/useForm'
 
 import { FormInput } from 'Components/FormInput'
+import { Button } from 'Components/Button'
 
 export const LoginForm = () => {
   const username = useForm('email')
@@ -40,8 +41,8 @@ export const LoginForm = () => {
           {...password}
         />
         {context?.loading ?
-          <S.LoginButton disabled>Carregando...</S.LoginButton> :
-          <S.LoginButton>Entrar</S.LoginButton>
+          <Button disabled={true}>Carregando...</Button> :
+          <Button>Entrar</Button>
         }
         {context?.error && <p>{context.error}</p>}
       </S.LoginForm>
