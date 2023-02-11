@@ -1,12 +1,12 @@
 import * as S from './Button.styled'
 import { ReactNode } from 'react'
 
-interface Btn {
+interface ButtonProps {
   children: ReactNode
   disabled?: boolean
 }
 
-export const Button = ({ children, disabled }: Btn) => {
+export const Button = ({ children, disabled }: ButtonProps) => {
   return (
     <S.Button disabled={disabled}>{children}</S.Button>
   )
