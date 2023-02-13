@@ -9,9 +9,13 @@ interface Type {
   errorMessage: string
 }
 
-type Types = Record<'email' | 'password', Type>
+type Types = Record<'email' | 'password' | 'username', Type>
 
 const types: Types = {
+  username: {
+    regex: /^[a-zA-Z][a-zA-Z_]{2,19}$/,
+    errorMessage: 'Nome inválido.'
+  },
   email: {
     regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
     errorMessage: 'Preencha um email válido.'
