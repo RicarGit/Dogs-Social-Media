@@ -10,8 +10,8 @@ export const Login = styled.section`
   &::before {
     content: '';
     display: block;
-    background: url(${bgDogLogin}) no-repeat top;
-    background-size: contain;
+    background: url(${bgDogLogin}) no-repeat center center;
+    background-size: cover;
   }
 
   @media (max-width: 50rem) {
@@ -26,6 +26,9 @@ export const Login = styled.section`
 export const FormsContainer = styled.div`
   max-width: 30rem;
   padding: 1rem;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: animeLeft .3s forwards;
 
   @media (max-width: 50rem) {
     max-width: 100%;

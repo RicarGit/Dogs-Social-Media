@@ -1,11 +1,6 @@
 import styled from "styled-components/macro"
 
-export const LoginFormContainer = styled.div`
-  &.animeLeft {
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: animeLeft .3s forwards;
-
+export const LoginFormContainer = styled.div`  
   .lostAccount {
     display: inline-block;
     color: #666;
@@ -20,7 +15,6 @@ export const LoginFormContainer = styled.div`
       background-color: currentColor;
     }
   }
-}
 `
 
 export const LoginForm = styled.form`

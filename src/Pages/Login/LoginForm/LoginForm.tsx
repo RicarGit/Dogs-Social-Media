@@ -25,7 +25,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <S.LoginFormContainer className='animeLeft'>
+    <S.LoginFormContainer>
       <h1>Login</h1>
 
       <S.LoginForm action='' onSubmit={handleSubmit}>
