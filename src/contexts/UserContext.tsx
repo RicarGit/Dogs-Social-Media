@@ -2,7 +2,7 @@ import { createContext, ReactNode, useEffect, useState, useCallback } from "reac
 import { useNavigate } from "react-router-dom"
 import { api } from "services/api"
 
-interface Children {
+interface UserContextProviderProps {
   children: ReactNode
 }
 
@@ -32,7 +32,7 @@ const getStorageToken = () => {
   return window.localStorage.getItem('token')
 }
 
-export const UserContextProvider = ({ children }: Children) => {
+export const UserContextProvider = ({ children }: UserContextProviderProps) => {
   const [data, setData] = useState<UserData | null>(null)
   const [login, setLogin] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
@@ -69,6 +69,8 @@ export const UserContextProvider = ({ children }: Children) => {
         } catch (error) {
           userLogout()
         }
+      } else {
+        setLogin(false)
       }
     }
 
