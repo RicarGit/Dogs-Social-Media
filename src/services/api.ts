@@ -1,4 +1,4 @@
-interface UserInfo {
+interface BodyProps {
   username: string
   password: string
   email?: string
@@ -7,7 +7,7 @@ interface UserInfo {
 const API_URL = 'https://dogsapi.origamid.dev/json'
 
 export const api = {
-  TOKEN_POST: (body: UserInfo) => {
+  TOKEN_POST: (body: BodyProps) => {
     return {
       url: `${API_URL}/jwt-auth/v1/token`,
       options: {
@@ -41,7 +41,7 @@ export const api = {
       }
     }
   },
-  USER_POST: (body: UserInfo) => {
+  USER_POST: (body: BodyProps) => {
     return {
       url: `${API_URL}/api/user`,
       options: {
