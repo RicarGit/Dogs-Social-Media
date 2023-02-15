@@ -6,6 +6,8 @@ import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
 import { useForm } from 'hooks/useForm'
 import { api } from 'services/api'
+import { useFetch } from 'hooks/useFetch'
+import { Error } from 'Components/Error'
 
 export const LoginCreate = () => {
   const username = useForm('username')
@@ -13,6 +15,7 @@ export const LoginCreate = () => {
   const password = useForm('password')
 
   const context = useContext(UserContext)
+  const { loading, error, request } = useFetch()
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
@@ -24,14 +27,13 @@ export const LoginCreate = () => {
     })
 
     try {
-      const response = await fetch(url, options)
+      const { response } = await request(url, options)
 
-      if (response.ok) {
+      if (response?.ok) {
         context?.userLogin(username.value, password.value)
       }
     } catch (error) {
       console.error(error)
-
     }
   }
 
@@ -58,7 +60,11 @@ export const LoginCreate = () => {
           name='password'
           {...password}
         />
-        <Button>Cadastrar</Button>
+        {loading
+          ? <Button disabled>Cadastrando...</Button>
+          : <Button>Cadastrar</Button>
+        }
+        <Error error={error} />
       </S.LoginCreateForm>
     </S.LoginCreate>
   )
