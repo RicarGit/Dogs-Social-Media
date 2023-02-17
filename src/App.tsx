@@ -7,9 +7,11 @@ import { UserContextProvider } from "contexts/UserContext"
 
 import { Home, Login } from "Pages"
 import { Header, Footer } from "Components"
+import { User } from "Pages/User"
+import { PrivateRoute } from "Components/PrivateRoute"
 
 const Main = styled.main`
-
+  
 `
 
 export function App() {
@@ -20,7 +22,12 @@ export function App() {
         <Main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login/*" element={<Login />} />
+            <Route path="login/*" element={<Login />} />
+            <Route path="conta/*" element={
+              <PrivateRoute>
+                <User />
+              </PrivateRoute>
+            } />
           </Routes>
         </Main>
         <Footer />
