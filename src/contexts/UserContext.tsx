@@ -28,7 +28,7 @@ const setStorageToken = (token: string) => {
   window.localStorage.setItem('token', token)
 }
 
-const getStorageToken = () => {
+export const getStorageToken = () => {
   return window.localStorage.getItem('token')
 }
 
