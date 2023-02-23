@@ -53,7 +53,7 @@ export const api = {
       }
     }
   },
-  PHOTO_POST: (formData: '', token: string) => {
+  PHOTO_POST: (formData: FormData, token: string) => {
     return {
       url: `${API_URL}/api/photo`,
       options: {
