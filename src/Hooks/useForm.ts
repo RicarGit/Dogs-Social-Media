@@ -9,7 +9,7 @@ interface Type {
   errorMessage: string
 }
 
-type Types = Record<'email' | 'password' | 'username', Type>
+type Types = Record<'email' | 'password' | 'username' | 'imgName' | 'weight' | 'age', Type>
 
 const types: Types = {
   username: {
@@ -23,6 +23,18 @@ const types: Types = {
   password: {
     regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     errorMessage: 'A senha precisa ter pelo menos 8 caracteres, incluindo letras e números.'
+  },
+  weight: {
+    regex: /0-9/,
+    errorMessage: 'Preencha um peso válido.'
+  },
+  age: {
+    regex: /d{0,3}/,
+    errorMessage: 'Idade inválida.'
+  },
+  imgName: {
+    regex: /^[a-zA-Z]{0,15}/,
+    errorMessage: 'nome de imagem inválido.'
   }
 }
 
