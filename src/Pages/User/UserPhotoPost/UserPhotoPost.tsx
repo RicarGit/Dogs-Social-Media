@@ -1,5 +1,62 @@
+import * as S from './UserPhotoPost.styled'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { getStorageToken } from 'contexts/UserContext'
+import { api } from 'services/api'
+
+import { useForm } from 'hooks/useForm'
+import { useFetch } from 'hooks/useFetch'
+
+import { Button } from 'Components/Button'
+import { FormInput } from 'Components/FormInput'
+
+interface ImageData {
+  raw: File | null
+  value: string
+}
+
 export const UserPhotoPost = () => {
+  const imgName = useForm('imgName')
+  const weight = useForm('weight')
+  const age = useForm('age')
+  const [img, setImg] = useState<ImageData>({ raw: null, value: '' })
+  const { data, error, loading, request } = useFetch()
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+
+    const token = getStorageToken()
+    const formData = new FormData()
+    formData.append('img', img.raw as File)
+    formData.append('imgName', img.value)
+    formData.append('weight', img.value)
+    formData.append('age', img.value)
+
+    if (token) {
+      const { url, options } = api.PHOTO_POST(formData, token)
+      request(url, options)
+    }
+  }
+
+  const handleImgChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0]
+
+      setImg({
+        raw: file,
+        value: file.name
+      })
+    }
+  }
+
   return (
-    <div>UserPhotoPost</div>
+    <S.UserPhotoPostSection className='animeLeft'>
+      <S.UserPhotoPostForm onSubmit={handleSubmit}>
+        <FormInput labelText='Nome' type='text' name='nome' {...imgName} />
+        <FormInput labelText='Peso' type='number' name='peso' {...weight} />
+        <FormInput labelText='Idade' type='number' name='idade' {...age} />
+        <S.InputFile type='file' name='img' id='img' onChange={handleImgChange} />
+        <Button>Enviar</Button>
+      </S.UserPhotoPostForm>
+    </S.UserPhotoPostSection>
   )
 }
