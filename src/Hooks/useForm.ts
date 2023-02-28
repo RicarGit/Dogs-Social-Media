@@ -25,12 +25,12 @@ const types: Types = {
     errorMessage: 'A senha precisa ter pelo menos 8 caracteres, incluindo letras e números.'
   },
   weight: {
-    regex: /0-9/,
-    errorMessage: 'Preencha um peso válido.'
+    regex: /^\d{0,3}$/,
+    errorMessage: 'Preencha um peso válido, permitido até 3 dígitos.'
   },
   age: {
-    regex: /d{0,3}/,
-    errorMessage: 'Idade inválida.'
+    regex: /^\d{0,3}$/,
+    errorMessage: 'Idade inválida, permitido até 3 dígitos.'
   },
   imgName: {
     regex: /^[a-zA-Z]{0,15}/,
