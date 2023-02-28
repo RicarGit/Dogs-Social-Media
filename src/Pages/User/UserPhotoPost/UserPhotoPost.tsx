@@ -27,9 +27,9 @@ export const UserPhotoPost = () => {
     const token = getStorageToken()
     const formData = new FormData()
     formData.append('img', img.raw as File)
-    formData.append('imgName', img.value)
-    formData.append('weight', img.value)
-    formData.append('age', img.value)
+    formData.append('nome', imgName.value)
+    formData.append('peso', weight.value)
+    formData.append('idade', age.value)
 
     if (token) {
       const { url, options } = api.PHOTO_POST(formData, token)
