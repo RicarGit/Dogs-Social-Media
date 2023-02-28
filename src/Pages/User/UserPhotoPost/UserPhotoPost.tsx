@@ -10,15 +10,15 @@ import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
 
 interface ImageData {
+  preview: string | null
   raw: File | null
-  value: string
 }
 
 export const UserPhotoPost = () => {
   const imgName = useForm('imgName')
   const weight = useForm('weight')
   const age = useForm('age')
-  const [img, setImg] = useState<ImageData>({ raw: null, value: '' })
+  const [img, setImg] = useState<ImageData>({ preview: null, raw: null })
   const { data, error, loading, request } = useFetch()
 
   const handleSubmit = (event: FormEvent) => {
@@ -42,8 +42,8 @@ export const UserPhotoPost = () => {
       const file = event.target.files[0]
 
       setImg({
-        raw: file,
-        value: file.name
+        preview: URL.createObjectURL(file),
+        raw: file
       })
     }
   }
@@ -57,6 +57,8 @@ export const UserPhotoPost = () => {
         <S.InputFile type='file' name='img' id='img' onChange={handleImgChange} />
         <Button>Enviar</Button>
       </S.UserPhotoPostForm>
+
+      {img.preview && <S.ImagePreview preview={img.preview} alt='' />}
     </S.UserPhotoPostSection>
   )
 }
