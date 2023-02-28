@@ -1,5 +1,5 @@
 import * as S from './UserPhotoPost.styled'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { getStorageToken } from 'contexts/UserContext'
 import { api } from 'services/api'
 
@@ -8,6 +8,8 @@ import { useFetch } from 'hooks/useFetch'
 
 import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
+import { Error } from 'Components/Error'
+import { useNavigate } from 'react-router-dom'
 
 interface ImageData {
   preview: string | null
@@ -20,6 +22,11 @@ export const UserPhotoPost = () => {
   const age = useForm('age')
   const [img, setImg] = useState<ImageData>({ preview: null, raw: null })
   const { data, error, loading, request } = useFetch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (data) navigate('/conta')
+  }, [data, navigate])
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -55,7 +62,11 @@ export const UserPhotoPost = () => {
         <FormInput labelText='Peso' type='number' name='peso' {...weight} />
         <FormInput labelText='Idade' type='number' name='idade' {...age} />
         <S.InputFile type='file' name='img' id='img' onChange={handleImgChange} />
-        <Button>Enviar</Button>
+        {loading
+          ? <Button disabled>Enviando...</Button>
+          : <Button>Enviar</Button>
+        }
+        <Error error={error} />
       </S.UserPhotoPostForm>
 
       {img.preview && <S.ImagePreview preview={img.preview} alt='' />}

@@ -5,14 +5,19 @@ interface Preview {
 }
 
 export const UserPhotoPostSection = styled.section`
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
 `
 
 export const UserPhotoPostForm = styled.form`
-
+  
 `
 
 export const InputFile = styled.input`
+  margin-bottom: 1rem;
+`
 
 export const ImagePreview = styled.img<Preview>`
   display: block;
