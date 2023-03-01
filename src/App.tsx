@@ -13,7 +13,7 @@ import { PrivateRoute } from "Components/PrivateRoute"
 const Main = styled.main`
   padding: 0 1rem;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 4rem auto 0 auto;
 `
 
 export function App() {
