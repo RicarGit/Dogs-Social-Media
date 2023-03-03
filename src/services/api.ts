@@ -4,6 +4,12 @@ interface BodyProps {
   email?: string
 }
 
+interface PhotosGet {
+  page: number
+  total: number
+  user: string
+}
+
 const API_URL = 'https://dogsapi.origamid.dev/json'
 
 export const api = {
