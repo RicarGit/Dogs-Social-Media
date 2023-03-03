@@ -80,5 +80,13 @@ export const api = {
       }
     }
   },
+  PHOTO_GET: (id: number) => {
+    return {
+      url: `${API_URL}/api/photo/${id}`,
+      options: {
+        method: 'GET',
+        Cache: 'no-storage'
+      }
+    }
   }
 }
