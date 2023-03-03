@@ -59,7 +59,15 @@ export const GlobalStyle = createGlobalStyle`
     z-index: -1;
   }
 
+  .animeLeft {
+    animation: animeLeft .3s forwards;
+  }
+
   @keyframes animeLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
     to {
       opacity: 1;
       transform: initial;
