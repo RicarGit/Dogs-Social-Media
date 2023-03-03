@@ -64,5 +64,15 @@ export const api = {
         body: formData
       }
     }
+  },
+  PHOTOS_GET: ({ page, total, user }: PhotosGet) => {
+    return {
+      url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+      options: {
+        method: 'GET',
+        Cache: 'no-storage'
+      }
+    }
+  },
   }
 }
