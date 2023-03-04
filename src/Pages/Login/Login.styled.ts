@@ -26,9 +26,6 @@ export const Login = styled.section`
 export const FormsContainer = styled.div`
   max-width: 30rem;
   padding: 1rem;
-  opacity: 0;
-  transform: translateX(-50px);
-  animation: animeLeft .3s forwards;
 
   @media (max-width: 50rem) {
     max-width: 100%;
