@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react"
+import { PhotoInfo } from "types/photoInfo"
 
 type JsonType = {
   code: string
@@ -9,7 +10,7 @@ type JsonType = {
 }
 
 export const useFetch = () => {
-  const [data, setData] = useState<JsonType | null>(null)
+  const [data, setData] = useState<JsonType | PhotoInfo | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
