@@ -1,7 +1,6 @@
 import * as S from './FeedPhotos.styled'
-import { useEffect, Dispatch, SetStateAction } from "react"
+import { useEffect } from "react"
 import { useFetch } from "hooks/useFetch"
-import { PhotoInfo } from 'types/photoInfo'
 import { api } from "services/api"
 
 import { FeedPhotosItem } from "./FeedPhotosItem"
@@ -26,9 +25,17 @@ export const FeedPhotos = ({ setModal }: SetModalProps) => {
   if (loading) return <Loading />
   if (!data) return null
 
+  const isPhotoInfo = (data: unknown): data is PhotoInfo[] => {
+    if (data && Array.isArray(data) && typeof data[0] === 'object' && 'id' in data[0]) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <S.PhotoList className='animeLeft'>
-      {(Array.isArray(data)) && data.map(photo =>
+      {isPhotoInfo(data) && data.map(photo =>
         <FeedPhotosItem
           key={photo.id}
           photo={photo}
