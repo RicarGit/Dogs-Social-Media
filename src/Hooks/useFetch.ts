@@ -10,7 +10,7 @@ type JsonType = {
 }
 
 export const useFetch = () => {
-  const [data, setData] = useState<JsonType | PhotoInfo | null>(null)
+  const [data, setData] = useState<JsonType | PhotoInfo[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
