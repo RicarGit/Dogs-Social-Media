@@ -7,12 +7,10 @@ import { api } from "services/api"
 import { FeedPhotosItem } from "./FeedPhotosItem"
 import { Error } from "Components/Error"
 import { Loading } from "Components/Loading"
+import { PhotoInfo } from 'types/photoInfo'
+import { SetModalProps } from 'types/setModal'
 
-interface SetModal {
-  setModalPhoto: Dispatch<SetStateAction<PhotoInfo | null>>
-}
-
-export const FeedPhotos = ({ setModalPhoto }: SetModal) => {
+export const FeedPhotos = ({ setModal }: SetModalProps) => {
   const { data, error, loading, request } = useFetch()
 
   useEffect(() => {
@@ -33,8 +31,8 @@ export const FeedPhotos = ({ setModalPhoto }: SetModal) => {
       {(Array.isArray(data)) && data.map(photo =>
         <FeedPhotosItem
           key={photo.id}
-          photoData={photo}
-          setModalPhoto={setModalPhoto}
+          photo={photo}
+          setModal={setModal}
         />
       )}
     </S.PhotoList>

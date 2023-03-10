@@ -1,10 +1,10 @@
 import * as S from './FeedModal.styled'
 import { useEffect } from 'react'
 import { useFetch } from 'hooks/useFetch'
-import { PhotoInfo } from 'types/photoInfo'
+import { PhotoData } from 'types/photoInfo'
 import { api } from 'services/api'
 
-export const FeedModal = ({ photo }: PhotoInfo) => {
+export const FeedModal = ({ photo }: PhotoData) => {
   const { data, error, loading, request } = useFetch()
 
   useEffect(() => {
