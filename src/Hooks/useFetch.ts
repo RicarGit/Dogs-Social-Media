@@ -1,13 +1,16 @@
+import { z } from 'zod'
 import { useState, useCallback } from "react"
 import { PhotoInfo } from "types/photoInfo"
 
-type JsonType = {
-  code: string
-  message: string
-  data: {
-    status: number
-  }
-}
+const jsonType = z.object({
+  code: z.string(),
+  message: z.string(),
+  data: z.object({
+    status: z.number()
+  })
+})
+
+type JsonType = z.infer<typeof jsonType>
 
 export const useFetch = () => {
   const [data, setData] = useState<JsonType | PhotoInfo[] | null>(null)

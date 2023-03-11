@@ -1,15 +1,20 @@
-export interface PhotoInfo {
-  acessos: string
-  author: string
-  date: string
-  id: number
-  idade: string
-  peso: string
-  src: string
-  title: string
-  total_comments: string
-}
+import { z } from 'zod'
 
-export interface PhotoData {
-  photo: PhotoInfo
-}
+const photoInfo = z.object({
+  acessos: z.string(),
+  author: z.string(),
+  date: z.string(),
+  id: z.number(),
+  idade: z.string(),
+  peso: z.string(),
+  src: z.string(),
+  title: z.string(),
+  total_comments: z.string()
+})
+
+const photoData = z.object({
+  photo: photoInfo
+})
+
+export type PhotoInfo = z.infer<typeof photoInfo>
+export type PhotoData = z.infer<typeof photoData>
