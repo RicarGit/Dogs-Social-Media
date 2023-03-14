@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const photoInfo = z.object({
+export const photoInfo = z.object({
   acessos: z.string(),
   author: z.string(),
   date: z.string(),
