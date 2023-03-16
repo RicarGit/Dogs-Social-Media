@@ -10,6 +10,10 @@ interface PhotosGet {
   user: string
 }
 
+interface CommentProps {
+  comment: string
+}
+
 const API_URL = 'https://dogsapi.origamid.dev/json'
 
 export const api = {
@@ -87,6 +91,19 @@ export const api = {
         method: 'GET',
         Cache: 'no-storage'
       }
+    }
+  },
+  COMMENT_POST: (id: number, body: CommentProps, token: string) => {
+    return {
+      url: `${API_URL}/api/comment/${id}`,
+      options: {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+      },
     }
   }
 }
