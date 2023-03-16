@@ -7,7 +7,11 @@ import { Error } from 'Components/Error'
 import { Loading } from 'Components/Loading'
 import { PhotoContent } from 'Components/Photo/PhotoContent'
 
-export const FeedModal = ({ photo }: PhotoData) => {
+interface Modal extends PhotoData {
+  setModal: SetModal
+}
+
+export const FeedModal = ({ photo, setModal }: Modal) => {
   const { data, error, loading, request } = useFetch()
 
   useEffect(() => {
