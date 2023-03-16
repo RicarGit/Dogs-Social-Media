@@ -14,7 +14,7 @@ export const Feed = () => {
 
   return (
     <>
-      {modalPhoto && <FeedModal photo={modalPhoto} />}
+      {modalPhoto && <FeedModal photo={modalPhoto} setModal={setModal} />}
       <FeedPhotos setModal={setModal} />
     </>
   )
