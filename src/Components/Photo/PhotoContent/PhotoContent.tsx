@@ -11,10 +11,10 @@ export const PhotoContent = ({ commentsData }: CommentsData) => {
       <S.PhotoImage src={photo.src} alt={photo.title} />
       <S.DetailsContainer>
         <S.Details>
-          <p>
+          <S.Author>
             <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
-            <S.Accesses>{photo.acessos}</S.Accesses>
-          </p>
+            <S.Views>{photo.acessos}</S.Views>
+          </S.Author>
 
           <S.PostTitle>
             <Link to={`/foto/${photo.id}`} >{photo.title}</Link>

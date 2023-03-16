@@ -13,7 +13,9 @@ export const DetailsContainer = styled.div`
 `
 
 export const Details = styled.div`
+`
 
+export const Author = styled.p`
 `
 
 export const Accesses = styled.span`
