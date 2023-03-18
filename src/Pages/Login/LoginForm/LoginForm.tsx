@@ -1,9 +1,8 @@
 import * as S from './LoginForm.styled'
 import { Link } from 'react-router-dom'
 import { FormEvent } from 'react'
-import { useContext } from 'react'
 
-import { UserContext } from 'contexts/UserContext'
+import { useUserContext } from 'contexts/UserContext'
 import { useForm } from 'hooks/useForm'
 
 import { FormInput } from 'Components/FormInput'
@@ -13,14 +12,14 @@ import { Button } from 'Components/Button'
 export const LoginForm = () => {
   const username = useForm('email')
   const password = useForm('password')
-  const context = useContext(UserContext)
+  const { userLogin, loading, error } = useUserContext()
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
     // username.validate() && password.validate()
     if (true) {
-      context?.userLogin(username.value, password.value)
+      userLogin(username.value, password.value)
     }
   }
 
@@ -41,11 +40,11 @@ export const LoginForm = () => {
           labelText='Senha'
           {...password}
         />
-        {context?.loading ?
+        {loading ?
           <Button disabled={true}>Carregando...</Button> :
           <Button>Entrar</Button>
         }
-        <Error error={context!.error} />
+        <Error error={error} />
       </S.LoginForm>
 
       <Link className='lostAccount' to={'perdeu'}>Perdeu a Senha?</Link>

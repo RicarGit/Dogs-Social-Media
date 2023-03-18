@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState, useCallback } from "react"
+import { createContext, ReactNode, useEffect, useState, useCallback, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from "services/api"
 
@@ -22,7 +22,17 @@ interface ContextData {
   error: string | null
 }
 
-export const UserContext = createContext<ContextData | null>(null)
+const UserContext = createContext<ContextData | null>(null)
+
+export const useUserContext = () => {
+  const context = useContext(UserContext)
+
+  if (!context) {
+    throw new Error('You need to wrap the App component with the context provider')
+  }
+
+  return context
+}
 
 const setStorageToken = (token: string) => {
   window.localStorage.setItem('token', token)
@@ -84,7 +94,6 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
 
     setData(userData)
     setLogin(true)
-    console.log(userData)
   }
 
   const userLogin = async (username: string, password: string) => {

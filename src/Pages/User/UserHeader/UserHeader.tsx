@@ -1,7 +1,7 @@
 import * as S from './UserHeader.styled'
 import { NavLink, useLocation } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
-import { UserContext } from 'contexts/UserContext'
+import { useEffect, useState } from 'react'
+import { useUserContext } from 'contexts/UserContext'
 import { useMedia } from 'hooks/useMedia'
 
 import { ReactComponent as MyFeedIcon } from 'assets/feed.svg'
@@ -13,7 +13,7 @@ export const UserHeader = () => {
   const [title, setTitle] = useState('')
   const [menuMobile, setMenuMobile] = useState(false)
   const { pathname } = useLocation()
-  const context = useContext(UserContext)
+  const { userLogout } = useUserContext()
   const mobile = useMedia('(max-width: 40rem)')
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export const UserHeader = () => {
           {mobile && 'Adicionar Foto'}
         </NavLink>
 
-        <S.LogoutButton onClick={context?.userLogout}>
+        <S.LogoutButton onClick={userLogout}>
           <LogoutIcon />
           {mobile && 'Sair'}
         </S.LogoutButton>

@@ -1,6 +1,6 @@
 import * as S from './LoginCreate.styled'
-import { FormEvent, useContext } from 'react'
-import { UserContext } from 'contexts/UserContext'
+import { FormEvent } from 'react'
+import { useUserContext } from 'contexts/UserContext'
 
 import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
@@ -14,7 +14,7 @@ export const LoginCreate = () => {
   const email = useForm('email')
   const password = useForm('password')
 
-  const context = useContext(UserContext)
+  const { userLogin } = useUserContext()
   const { loading, error, request } = useFetch()
 
   const handleSubmit = async (event: FormEvent) => {
@@ -30,7 +30,7 @@ export const LoginCreate = () => {
       const { response } = await request(url, options)
 
       if (response?.ok) {
-        context?.userLogin(username.value, password.value)
+        userLogin(username.value, password.value)
       }
     } catch (error) {
       console.error(error)
