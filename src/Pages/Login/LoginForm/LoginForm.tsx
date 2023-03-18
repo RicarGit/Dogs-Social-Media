@@ -6,7 +6,7 @@ import { useUserContext } from 'contexts/UserContext'
 import { useForm } from 'hooks/useForm'
 
 import { FormInput } from 'Components/FormInput'
-import { Error } from 'Components/Error'
+import { ErrorInfo } from 'Components/ErrorInfo'
 import { Button } from 'Components/Button'
 
 export const LoginForm = () => {
@@ -44,7 +44,7 @@ export const LoginForm = () => {
           <Button disabled={true}>Carregando...</Button> :
           <Button>Entrar</Button>
         }
-        <Error error={error} />
+        <ErrorInfo error={error} />
       </S.LoginForm>
 
       <Link className='lostAccount' to={'perdeu'}>Perdeu a Senha?</Link>

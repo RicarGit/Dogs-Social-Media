@@ -5,7 +5,7 @@ import { PhotoData } from 'types/photoInfo'
 import { SetModal } from 'types/setModal'
 import { api } from 'services/api'
 
-import { Error } from 'Components/Error'
+import { ErrorInfo } from 'Components/ErrorInfo'
 import { Loading } from 'Components/Loading'
 import { PhotoContent } from 'Components/Photo/PhotoContent'
 
@@ -29,9 +29,9 @@ export const FeedModal = ({ photo, setModal }: Modal) => {
 
   return (
     <S.FeedModal onClick={handleOutsideClick}>
-      {error && <Error error={error} />}
+      {error && <ErrorInfo error={error} />}
       {loading && <Loading />}
-      {data && ('comments' in data) && <PhotoContent commentsData={data} />}
+      {data && 'photo' in data && ('comments' in data) && <PhotoContent commentsData={data} />}
     </S.FeedModal>
   )
 }

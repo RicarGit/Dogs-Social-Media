@@ -7,7 +7,7 @@ import { FormInput } from 'Components/FormInput'
 import { useForm } from 'hooks/useForm'
 import { api } from 'services/api'
 import { useFetch } from 'hooks/useFetch'
-import { Error } from 'Components/Error'
+import { ErrorInfo } from 'Components/ErrorInfo'
 
 export const LoginCreate = () => {
   const username = useForm('username')
@@ -64,7 +64,7 @@ export const LoginCreate = () => {
           ? <Button disabled>Cadastrando...</Button>
           : <Button>Cadastrar</Button>
         }
-        <Error error={error} />
+        <ErrorInfo error={error} />
       </S.LoginCreateForm>
     </S.LoginCreate>
   )

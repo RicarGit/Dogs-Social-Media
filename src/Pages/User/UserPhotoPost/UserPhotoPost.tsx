@@ -8,7 +8,7 @@ import { useFetch } from 'hooks/useFetch'
 
 import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
-import { Error } from 'Components/Error'
+import { ErrorInfo } from 'Components/ErrorInfo'
 import { useNavigate } from 'react-router-dom'
 
 interface ImageData {
@@ -66,7 +66,7 @@ export const UserPhotoPost = () => {
           ? <Button disabled>Enviando...</Button>
           : <Button>Enviar</Button>
         }
-        <Error error={error} />
+        <ErrorInfo error={error} />
       </S.UserPhotoPostForm>
 
       {img.preview && <S.ImagePreview preview={img.preview} alt='' />}

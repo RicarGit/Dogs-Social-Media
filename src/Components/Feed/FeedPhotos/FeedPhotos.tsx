@@ -4,7 +4,7 @@ import { useFetch } from "hooks/useFetch"
 import { api } from "services/api"
 
 import { FeedPhotosItem } from "./FeedPhotosItem"
-import { Error } from "Components/Error"
+import { ErrorInfo } from "Components/ErrorInfo"
 import { Loading } from "Components/Loading"
 import { SetModalProps } from 'types/setModal'
 
@@ -20,7 +20,7 @@ export const FeedPhotos = ({ setModal }: SetModalProps) => {
     fetchPhotos()
   }, [request])
 
-  if (error) return <Error error={error} />
+  if (error) return <ErrorInfo error={error} />
   if (loading) return <Loading />
   if (!data) return null
 

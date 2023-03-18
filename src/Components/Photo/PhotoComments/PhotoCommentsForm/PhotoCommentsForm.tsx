@@ -4,6 +4,7 @@ import { ReactComponent as Enviar } from 'assets/enviar.svg'
 import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
 import { getStorageToken } from 'contexts/UserContext'
+import { ErrorInfo } from 'Components/ErrorInfo'
 
 interface CommentsFormId {
   id: number
@@ -41,6 +42,8 @@ export const PhotoCommentsForm = ({ id }: CommentsFormId) => {
       <S.CommentsAreaButton>
         <Enviar />
       </S.CommentsAreaButton>
+
+      <ErrorInfo error={error} />
     </S.PhotoCommentsForm>
   )
 }
