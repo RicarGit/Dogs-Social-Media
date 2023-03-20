@@ -1,5 +1,5 @@
 import styled from "styled-components/macro"
 
-export const PhotoComments = styled.div`
+export const PhotoComments = styled.ul`
 
 `
