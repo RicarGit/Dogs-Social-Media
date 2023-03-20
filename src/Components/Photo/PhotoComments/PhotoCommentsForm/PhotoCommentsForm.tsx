@@ -4,13 +4,15 @@ import { ReactComponent as Enviar } from 'assets/enviar.svg'
 import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
 import { getStorageToken } from 'contexts/UserContext'
+import { PhotoCommentsType } from 'types/photoComments'
 import { ErrorInfo } from 'Components/ErrorInfo'
 
 interface CommentsFormId {
   id: number
+  updateCommentaries: (comments: PhotoCommentsType) => void
 }
 
-export const PhotoCommentsForm = ({ id }: CommentsFormId) => {
+export const PhotoCommentsForm = ({ id, updateCommentaries }: CommentsFormId) => {
   const [comment, setComment] = useState('')
   const { request, error } = useFetch()
 
@@ -23,9 +25,15 @@ export const PhotoCommentsForm = ({ id }: CommentsFormId) => {
     e.preventDefault()
     const token = getStorageToken()
 
-    if (token) {
-      const { url, options } = api.COMMENT_POST(id, { comment }, token)
-      await request(url, options)
+    if (!token) {
+      throw new Error('Faça login para comentar!')
+    }
+
+    const { url, options } = api.COMMENT_POST(id, { comment }, token)
+    const { response, json } = await request(url, options)
+    if (response && response.ok && json && 'comments' in json) {
+      updateCommentaries(json.comments)
+      setComment('')
     }
   }
 
