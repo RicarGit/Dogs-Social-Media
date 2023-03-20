@@ -12,15 +12,17 @@ const jsonType = z.object({
 })
 
 type JsonType = z.infer<typeof jsonType>
+type PhotoCommentsType = Pick<PhotoCommentsData, 'comments'>
+type DataTypes = JsonType | PhotoCommentsType | PhotoInfo[] | PhotoCommentsData
 
 export const useFetch = () => {
-  const [data, setData] = useState<JsonType | PhotoInfo[] | PhotoCommentsData | null>(null)
+  const [data, setData] = useState<DataTypes | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
   const request = useCallback(async (url: string, options: RequestInit) => {
     let response: Response | null = null
-    let json: JsonType | null = null
+    let json: DataTypes | null = null
 
     try {
       setError(null)
@@ -28,10 +30,12 @@ export const useFetch = () => {
       response = await fetch(url, options)
       json = await response.json()
 
-      if (!response.ok) {
-        throw new Error(json?.message)
+      if (!response.ok && json && 'message' in json) {
+        throw new Error(json.message)
       }
 
+      setData(json)
+      setLoading(false)
     } catch (error) {
       if (error instanceof Error) {
         json = null
@@ -39,12 +43,8 @@ export const useFetch = () => {
       }
     }
 
-    setData(json)
-    setLoading(false)
-
     return { response, json }
   }, [])
-
 
   return {
     data,
