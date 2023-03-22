@@ -1,7 +1,7 @@
+import * as S from './PhotoDelete.styled'
 import { getStorageToken } from 'contexts/UserContext'
 import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
-import * as S from './PhotoDelete.styled'
 
 interface UserId {
   userId: string
@@ -29,7 +29,7 @@ export const PhotoDelete = ({ userId }: UserId) => {
   return (
     <>
       {loading
-        ? <S.PhotoDelete disabled >Deletar</S.PhotoDelete >
+        ? <S.PhotoDelete disabled >Deletando...</S.PhotoDelete >
         : <S.PhotoDelete onClick={handleClick} >Deletar</S.PhotoDelete >
       }
     </>
