@@ -13,16 +13,7 @@ export const Header = () => {
         <Link className="logo" to="/" aria-label="Dogs - Home">
           <Dogs />
         </Link>
-
-        {data ? (
-          <Link className="login" to="/conta">
-            {data.nome}
-            <S.LogoutButton onClick={userLogout}>Sair</S.LogoutButton>
-          </Link>
-        ) : (
-          <Link className="login" to="/login">Login / Criar</Link>
-        )}
-
+        {data && <Link className="login" to="/login">Login / Criar</Link>}
       </S.Navigation>
     </S.Header>
   )
