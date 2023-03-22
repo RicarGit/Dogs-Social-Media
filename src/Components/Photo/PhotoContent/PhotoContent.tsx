@@ -1,18 +1,25 @@
+import { ImageSkeleton } from 'Components/ImageSkeleton'
+import { useUserContext } from 'contexts/UserContext'
 import { Link } from 'react-router-dom'
 import { CommentsData } from 'types/photoComments'
 import { PhotoComments } from '../PhotoComments/PhotoComments'
+import { PhotoDelete } from '../PhotoDelete'
 import * as S from './PhotoContent.styled'
 
 export const PhotoContent = ({ commentsData }: CommentsData) => {
   const { photo, comments } = commentsData
+  const { data } = useUserContext()
 
   return (
     <S.PhotoContent>
-      <S.PhotoImage src={photo.src} alt={photo.title} />
+      <ImageSkeleton src={photo.src} alt={photo.title} />
       <S.DetailsContainer>
         <S.Details>
           <S.Author>
-            <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
+            {data && data.username === photo.author
+              ? <PhotoDelete userId={data.id} />
+              : <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
+            }
             <S.Views>{photo.acessos}</S.Views>
           </S.Author>
 
