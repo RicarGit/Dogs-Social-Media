@@ -4,12 +4,12 @@ import { ReactComponent as Enviar } from 'assets/enviar.svg'
 import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
 import { getStorageToken } from 'contexts/UserContext'
-import { PhotoCommentsType } from 'types/photoComments'
+import { CommentType } from 'types/photoComments'
 import { ErrorInfo } from 'Components/ErrorInfo'
 
 interface CommentsFormId {
   id: number
-  updateCommentaries: (comments: PhotoCommentsType) => void
+  updateCommentaries: (comments: CommentType) => void
 }
 
 export const PhotoCommentsForm = ({ id, updateCommentaries }: CommentsFormId) => {
@@ -31,9 +31,9 @@ export const PhotoCommentsForm = ({ id, updateCommentaries }: CommentsFormId) =>
 
     const { url, options } = api.COMMENT_POST(id, { comment }, token)
     const { response, json } = await request(url, options)
-    if (response && response.ok && json && 'comments' in json) {
-      updateCommentaries(json.comments)
+    if (response && response.ok && json && 'comment_content' in json) {
       setComment('')
+      updateCommentaries(json)
     }
   }
 

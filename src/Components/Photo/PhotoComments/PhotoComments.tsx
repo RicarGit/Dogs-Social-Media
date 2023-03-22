@@ -1,9 +1,10 @@
 import { PhotoCommentsType } from 'types/photoComments'
 import * as S from './PhotoComments.styled'
+import { CommentType } from 'types/photoComments'
 
 interface PhotoCommentsInfo {
   id: number
-  comments: PhotoCommentsType
+  comments: CommentType[]
 }
 
 export const PhotoComments = ({ id, comments }: PhotoCommentsInfo) => {
