@@ -2,6 +2,7 @@ import styled from "styled-components/macro"
 
 export const ImageSkeletonWrapper = styled.div`
   display: grid;
+  grid-row: 1/4;
 `
 
 export const Skeleton = styled.div`

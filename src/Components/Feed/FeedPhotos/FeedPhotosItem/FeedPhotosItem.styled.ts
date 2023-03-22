@@ -18,16 +18,16 @@ export const FeedPhotosItem = styled.li`
     align-items: center;
   }
 
+  & > div {
+    grid-area: 1/1;
+  }
+
   @media (max-width: 40rem) {
     &:nth-child(2) {
       grid-column: initial;
       grid-row: initial;
     }
   }
-`
-
-export const PhotoItem = styled.img`
-  grid-area: 1/1;
 `
 
 export const PhotoViews = styled.span`

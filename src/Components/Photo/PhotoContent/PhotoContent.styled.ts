@@ -28,14 +28,6 @@ export const PhotoContent = styled.div`
   }
 `
 
-export const PhotoImage = styled.img`
-  grid-row: 1/4;
-`
-
-export const DetailsContainer = styled.div`
-
-`
-
 export const Details = styled.div`
   padding: 2rem 2rem 0 2rem;
 `
