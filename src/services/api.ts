@@ -105,5 +105,16 @@ export const api = {
         body: JSON.stringify(body)
       },
     }
+  },
+  PHOTO_DELETE: (id: string, token: string) => {
+    return {
+      url: `${API_URL}/api/photo/${id}`,
+      options: {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      },
+    }
   }
 }
