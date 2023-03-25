@@ -2,6 +2,6 @@ import { Feed } from "Components/Feed"
 
 export const Home = () => {
   return (
-    <Feed />
+    <Feed user={'0'} />
   )
 }
