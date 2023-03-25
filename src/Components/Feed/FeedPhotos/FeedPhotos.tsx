@@ -2,23 +2,34 @@ import * as S from './FeedPhotos.styled'
 import { useEffect } from "react"
 import { useFetch } from "hooks/useFetch"
 import { api } from "services/api"
+import { SetModalProps } from 'types/setModal'
 
 import { FeedPhotosItem } from "./FeedPhotosItem"
 import { ErrorInfo } from "Components/ErrorInfo"
 import { Loading } from "Components/Loading"
-import { SetModalProps } from 'types/setModal'
 
-export const FeedPhotos = ({ setModal }: SetModalProps) => {
+interface UserFeed extends SetModalProps {
+  user: string
+  page: number
+  finalPage: () => void
+}
+
+export const FeedPhotos = ({ setModal, user, page, finalPage }: UserFeed) => {
   const { data, error, loading, request } = useFetch()
+  const total = 6
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const { url, options } = api.PHOTOS_GET({ page: 1, total: 12, user: '0' })
+      const { url, options } = api.PHOTOS_GET({ page, total, user })
       const { response, json } = await request(url, options)
+
+      if (response && response.ok && json && Array.isArray(json) && json.length < total) {
+        finalPage()
+      }
     }
 
     fetchPhotos()
-  }, [request])
+  }, [request, user, page, finalPage])
 
   if (error) return <ErrorInfo error={error} />
   if (loading) return <Loading />
