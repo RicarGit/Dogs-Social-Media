@@ -12,7 +12,7 @@ const jsonType = z.object({
 })
 
 type JsonType = z.infer<typeof jsonType>
-type DataTypes = JsonType | CommentType | PhotoInfo | PhotoCommentsData
+type DataTypes = JsonType | CommentType | PhotoInfo[] | PhotoCommentsData
 
 export const useFetch = () => {
   const [data, setData] = useState<DataTypes | null>(null)
