@@ -11,6 +11,7 @@ import { User } from "Pages/User"
 import { PrivateRoute } from "Components/PrivateRoute"
 import { Photo } from "Components/Photo"
 import { UserProfile } from "Pages/User/UserProfile"
+import { NotFound } from "Pages/NotFound"
 
 const Main = styled.main`
   padding: 0 1rem;
@@ -34,6 +35,7 @@ export function App() {
                 <User />
               </PrivateRoute>
             } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Main>
         <Footer />
