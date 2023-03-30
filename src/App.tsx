@@ -9,6 +9,7 @@ import { Home, Login } from "Pages"
 import { Header, Footer } from "Components"
 import { User } from "Pages/User"
 import { PrivateRoute } from "Components/PrivateRoute"
+import { Photo } from "Components/Photo"
 
 const Main = styled.main`
   padding: 0 1rem;
@@ -25,6 +26,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login/*" element={<Login />} />
+            <Route path="foto/:id" element={<Photo />} />
             <Route path="conta/*" element={
               <PrivateRoute>
                 <User />
