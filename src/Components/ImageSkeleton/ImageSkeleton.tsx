@@ -1,5 +1,5 @@
-import { SyntheticEvent, useState } from 'react'
 import * as S from './ImageSkeleton.styled'
+import { SyntheticEvent, useState } from 'react'
 
 interface SkeletonProps {
   [key: string]: string
