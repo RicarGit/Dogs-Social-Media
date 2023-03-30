@@ -1,9 +1,10 @@
 import styled from "styled-components/macro"
+import { Single } from "types/single"
 
 export const PhotoComments = styled.ul`
   overflow-y: auto;
   word-break: break-all;
-  padding: 0 2rem;
+  padding: ${({ single }: Single) => single ? "0" : "0 2rem"};
 `
 
 export const PhotoComment = styled.li`

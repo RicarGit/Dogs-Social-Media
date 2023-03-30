@@ -1,35 +1,38 @@
-import styled from "styled-components/macro"
+import styled, { css } from "styled-components/macro"
 import views from 'assets/visualizacao-black.svg'
+import { Single } from 'types/single'
 
 export const PhotoContent = styled.div`
-  height: 36rem;
-  border-radius: .2rem;
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: 36rem 20rem;
-  grid-template-rows: auto 1fr auto;
-  overflow: hidden;
-  opacity: 0;
-  transform: scale(.8);
-  animation: scaleUp .3s forwards;
+  ${({ single }: Single) => css`
+    height: ${single ? "auto" : "36rem"};
+    border-radius: ${single ? ".2rem" : ".4rem"};
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: ${single ? "1fr" : "36rem 20rem"};
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(.8);
+    animation: scaleUp .3s forwards;
 
-  @keyframes scaleUp {
-    to {
-      opacity: initial;
-      transform: initial;
+    @keyframes scaleUp {
+      to {
+        opacity: initial;
+        transform: initial;
+      }
     }
-  }
 
-  @media (max-width: 64rem) {
-    height: auto;
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
-    grid-template-columns: minmax(20rem, 40rem);
-  }
+    @media (max-width: 64rem) {
+      height: auto;
+      max-height: calc(100vh - 4rem);
+      overflow-y: auto;
+      grid-template-columns: minmax(20rem, 40rem);
+    }
+  `}
 `
 
 export const Details = styled.div`
-  padding: 2rem 2rem 0 2rem;
+  padding: ${({ single }: Single) => single ? "1rem 0 0 0" : "2rem 2rem 0 2rem"};
 `
 
 export const Author = styled.p`

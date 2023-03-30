@@ -1,16 +1,17 @@
 import * as S from './PhotoComments.styled'
 import { useEffect, useRef, useState } from 'react'
 import { CommentType } from 'types/photoComments'
+import { Single } from 'types/single'
 import { useUserContext } from 'contexts/UserContext'
 
 import { PhotoCommentsForm } from './PhotoCommentsForm'
 
-interface PhotoCommentsInfo {
+interface PhotoCommentsInfo extends Single {
   id: number
   comments: CommentType[]
 }
 
-export const PhotoComments = ({ id, comments }: PhotoCommentsInfo) => {
+export const PhotoComments = ({ id, comments, single }: PhotoCommentsInfo) => {
   const [commentaries, setCommentaries] = useState(comments)
   const commentSection = useRef<HTMLUListElement>(null)
   const { login } = useUserContext()
@@ -29,7 +30,7 @@ export const PhotoComments = ({ id, comments }: PhotoCommentsInfo) => {
 
   return (
     <>
-      <S.PhotoComments ref={commentSection}>
+      <S.PhotoComments single={single} ref={commentSection}>
         {commentaries.map(comment => (
           <S.PhotoComment key={comment.comment_ID}>
             <S.CommentAuthor>{comment.comment_author}: </S.CommentAuthor>
@@ -38,7 +39,9 @@ export const PhotoComments = ({ id, comments }: PhotoCommentsInfo) => {
         ))}
       </S.PhotoComments>
 
-      {login && <PhotoCommentsForm id={id} updateCommentaries={updateCommentaries} />}
+      {login &&
+        <PhotoCommentsForm single={single} id={id} updateCommentaries={updateCommentaries} />
+      }
     </>
   )
 }

@@ -6,13 +6,14 @@ import { api } from 'services/api'
 import { getStorageToken } from 'contexts/UserContext'
 import { CommentType } from 'types/photoComments'
 import { ErrorInfo } from 'Components/ErrorInfo'
+import { Single } from 'types/single'
 
 interface CommentsFormId {
   id: number
   updateCommentaries: (comments: CommentType) => void
 }
 
-export const PhotoCommentsForm = ({ id, updateCommentaries }: CommentsFormId) => {
+export const PhotoCommentsForm = ({ id, updateCommentaries, single }: CommentsFormId & Single) => {
   const [comment, setComment] = useState('')
   const { request, error } = useFetch()
 
@@ -38,7 +39,7 @@ export const PhotoCommentsForm = ({ id, updateCommentaries }: CommentsFormId) =>
   }
 
   return (
-    <S.PhotoCommentsForm onSubmit={handleSubmit}>
+    <S.PhotoCommentsForm single={single} onSubmit={handleSubmit}>
       <S.CommentsArea
         id='comment'
         name='comment'
