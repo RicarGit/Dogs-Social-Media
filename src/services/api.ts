@@ -19,6 +19,11 @@ interface PasswordLost {
   url: string
 }
 
+interface PasswordReset extends Pick<PasswordLost, 'login'> {
+  key: string
+  password: string
+}
+
 const API_URL = 'https://dogsapi.origamid.dev/json'
 
 export const api = {
@@ -134,5 +139,16 @@ export const api = {
       },
     }
   },
+  PASSWORD_RESET: (body: PasswordReset) => {
+    return {
+      url: `${API_URL}/api/password/reset`,
+      options: {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      },
+    }
   }
 }
