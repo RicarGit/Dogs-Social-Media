@@ -7,6 +7,7 @@ import { api } from 'services/api'
 import { FormInput } from 'Components/FormInput'
 import { Button } from 'Components/Button'
 import { ErrorInfo } from 'Components/ErrorInfo'
+import { Head } from 'Components'
 
 export const LoginPasswordLost = () => {
   const login = useForm('email')
@@ -24,6 +25,7 @@ export const LoginPasswordLost = () => {
 
   return (
     <S.LoginPasswordLost>
+      <Head title='Recupere a Senha' />
       <S.PasswordLostTitle>
         Perdeu a senha?
       </S.PasswordLostTitle>

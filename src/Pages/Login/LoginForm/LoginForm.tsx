@@ -8,6 +8,7 @@ import { useForm } from 'hooks/useForm'
 import { FormInput } from 'Components/FormInput'
 import { ErrorInfo } from 'Components/ErrorInfo'
 import { Button } from 'Components/Button'
+import { Head } from 'Components'
 
 export const LoginForm = () => {
   const username = useForm('email')
@@ -25,6 +26,7 @@ export const LoginForm = () => {
 
   return (
     <S.LoginFormContainer>
+      <Head title='Faça Login' />
       <h1>Login</h1>
 
       <S.LoginForm action='' onSubmit={handleSubmit}>

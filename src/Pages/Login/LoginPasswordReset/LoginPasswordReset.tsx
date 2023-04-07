@@ -8,6 +8,7 @@ import { api } from 'services/api'
 import { FormInput } from 'Components/FormInput'
 import { Button } from 'Components/Button'
 import { ErrorInfo } from 'Components/ErrorInfo'
+import { Head } from 'Components'
 
 export const LoginPasswordReset = () => {
   const [key, setKey] = useState('')
@@ -38,6 +39,7 @@ export const LoginPasswordReset = () => {
 
   return (
     <S.LoginPasswordReset onSubmit={handleSubmit}>
+      <Head title='Resete a Senha' />
       <S.PasswordResetTitle>
         Reset a Senha
       </S.PasswordResetTitle>

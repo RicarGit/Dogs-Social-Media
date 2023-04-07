@@ -7,12 +7,14 @@ import { UserStats } from './UserStats'
 import { UserPhotoPost } from './UserPhotoPost'
 import { useUserContext } from 'contexts/UserContext'
 import { NotFound } from 'Pages/NotFound'
+import { Head } from 'Components'
 
 export const User = () => {
   const { data } = useUserContext()
 
   return (
     <S.UserSection>
+      <Head title='Minha Conta' />
       <UserHeader />
 
       <Routes>

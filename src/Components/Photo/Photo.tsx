@@ -7,6 +7,7 @@ import { api } from 'services/api'
 import { ErrorInfo } from 'Components/ErrorInfo'
 import { Loading } from 'Components/Loading'
 import { PhotoContent } from './PhotoContent'
+import { Head } from 'Components/Head'
 
 export const Photo = () => {
   const { id } = useParams()
@@ -25,7 +26,10 @@ export const Photo = () => {
   return (
     <S.Photo>
       {data && 'photo' in data &&
-        <PhotoContent single={true} commentsData={data} />
+        <>
+          <Head title={data.photo.title} />
+          <PhotoContent single={true} commentsData={data} />
+        </>
       }
     </S.Photo>
   )

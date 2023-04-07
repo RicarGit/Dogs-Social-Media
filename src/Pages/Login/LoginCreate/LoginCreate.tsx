@@ -8,6 +8,7 @@ import { useForm } from 'hooks/useForm'
 import { api } from 'services/api'
 import { useFetch } from 'hooks/useFetch'
 import { ErrorInfo } from 'Components/ErrorInfo'
+import { Head } from 'Components'
 
 export const LoginCreate = () => {
   const username = useForm('username')
@@ -39,6 +40,7 @@ export const LoginCreate = () => {
 
   return (
     <S.LoginCreate>
+      <Head title='Crie Sua Conta' />
       <h1>Cadastre-se</h1>
 
       <S.LoginCreateForm onSubmit={handleSubmit}>

@@ -1,14 +1,19 @@
-import { Feed } from 'Components/Feed'
 import { useParams } from 'react-router-dom'
-import * as S from './UserProfile.styled'
+
+import { Feed, Head } from 'Components'
 
 export const UserProfile = () => {
   const { user } = useParams()
 
   return (
-    <S.UserProfile>
-      <S.UserTitle>{user}</S.UserTitle>
-      {user && <Feed user={user} />}
-    </S.UserProfile>
+    <section>
+      <h1>{user}</h1>
+      {user &&
+        <>
+          <Head title={user} />
+          <Feed user={user} />
+        </>
+      }
+    </section>
   )
 }

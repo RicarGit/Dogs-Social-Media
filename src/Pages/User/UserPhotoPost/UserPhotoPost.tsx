@@ -10,6 +10,7 @@ import { Button } from 'Components/Button'
 import { FormInput } from 'Components/FormInput'
 import { ErrorInfo } from 'Components/ErrorInfo'
 import { useNavigate } from 'react-router-dom'
+import { Head } from 'Components'
 
 interface ImageData {
   preview: string | null
@@ -57,6 +58,7 @@ export const UserPhotoPost = () => {
 
   return (
     <S.UserPhotoPostSection className='animeLeft'>
+      <Head title='Poste sua foto' />
       <S.UserPhotoPostForm onSubmit={handleSubmit}>
         <FormInput labelText='Nome' type='text' name='nome' {...imgName} />
         <FormInput labelText='Peso' type='number' name='peso' {...weight} />

@@ -1,5 +1,10 @@
+import { Head } from "Components"
+
 export const UserStats = () => {
   return (
-    <div>UserStats</div>
+    <div>
+      <Head title='Estatísticas' />
+      Estatísticas
+    </div>
   )
 }
