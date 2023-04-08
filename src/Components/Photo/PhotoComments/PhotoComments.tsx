@@ -1,7 +1,7 @@
 import * as S from './PhotoComments.styled'
 import { useEffect, useRef, useState } from 'react'
-import { CommentType } from 'types/photoComments'
-import { Single } from 'types/single'
+
+import { CommentType, Single } from 'types'
 import { useUserContext } from 'contexts/UserContext'
 
 import { PhotoCommentsForm } from './PhotoCommentsForm'

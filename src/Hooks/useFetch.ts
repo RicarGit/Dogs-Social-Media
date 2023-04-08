@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { useState, useCallback } from "react"
-import { PhotoInfo } from "types/photoInfo"
-import { CommentType, PhotoCommentsData } from 'types/photoComments'
+import { PhotoInfo, CommentType, PhotoCommentsData } from 'types'
 
 const jsonType = z.object({
   code: z.string(),

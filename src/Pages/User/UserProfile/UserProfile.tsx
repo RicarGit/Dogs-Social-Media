@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-
 import { Feed, Head } from 'Components'
 
 export const UserProfile = () => {

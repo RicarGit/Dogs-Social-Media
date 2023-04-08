@@ -1,14 +1,11 @@
 import * as S from './LoginCreate.styled'
 import { FormEvent } from 'react'
+
+import { api } from 'services/api'
+import { useForm, useFetch } from 'hooks'
 import { useUserContext } from 'contexts/UserContext'
 
-import { Button } from 'Components/Button'
-import { FormInput } from 'Components/FormInput'
-import { useForm } from 'hooks/useForm'
-import { api } from 'services/api'
-import { useFetch } from 'hooks/useFetch'
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Head } from 'Components'
+import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginCreate = () => {
   const username = useForm('username')

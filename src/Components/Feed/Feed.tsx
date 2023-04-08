@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-import { PhotoInfo } from "types/photoInfo"
-import { SetModal } from "types/setModal"
+import { PhotoInfo, SetModal } from "types"
 
-import { FeedModal } from "./FeedModal"
-import { FeedPhotos } from "./FeedPhotos"
+import { FeedModal, FeedPhotos } from "./"
 
 interface UserId {
   user: string

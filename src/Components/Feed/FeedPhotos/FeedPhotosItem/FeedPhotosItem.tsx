@@ -1,7 +1,6 @@
 import * as S from './FeedPhotosItem.styled'
-import { PhotoInfo } from 'types/photoInfo'
-import { SetModalProps } from 'types/setModal'
-import { ImageSkeleton } from 'Components/ImageSkeleton'
+import { PhotoInfo, SetModalProps } from 'types'
+import { ImageSkeleton } from 'Components'
 
 interface SetModalPhotoData extends SetModalProps {
   photo: PhotoInfo

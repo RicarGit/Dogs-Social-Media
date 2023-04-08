@@ -3,14 +3,11 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { getStorageToken } from 'contexts/UserContext'
 import { api } from 'services/api'
 
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'hooks/useForm'
 import { useFetch } from 'hooks/useFetch'
 
-import { Button } from 'Components/Button'
-import { FormInput } from 'Components/FormInput'
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { useNavigate } from 'react-router-dom'
-import { Head } from 'Components'
+import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 interface ImageData {
   preview: string | null

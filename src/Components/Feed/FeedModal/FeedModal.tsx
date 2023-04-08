@@ -1,13 +1,12 @@
 import * as S from './FeedModal.styled'
 import { useEffect, MouseEvent } from 'react'
-import { useFetch } from 'hooks/useFetch'
-import { PhotoData } from 'types/photoInfo'
-import { SetModal } from 'types/setModal'
-import { api } from 'services/api'
 
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Loading } from 'Components/Loading'
-import { PhotoContent } from 'Components/Photo/PhotoContent'
+import { api } from 'services/api'
+import { useFetch } from 'hooks/useFetch'
+import { PhotoData, SetModal } from 'types'
+
+import { ErrorInfo, Loading } from 'Components'
+import { PhotoContent } from 'Components/Photo'
 
 interface Modal extends PhotoData {
   setModal: SetModal

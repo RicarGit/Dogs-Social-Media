@@ -1,5 +1,6 @@
 import * as S from './Header.styled'
 import { Link } from 'react-router-dom'
+
 import { useUserContext } from 'contexts/UserContext'
 import { ReactComponent as Dogs } from 'assets/dogs.svg'
 

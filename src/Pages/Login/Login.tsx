@@ -2,11 +2,8 @@ import * as S from './Login.styled'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { useUserContext } from 'contexts/UserContext'
 
-import { LoginForm } from './LoginForm'
-import { LoginCreate } from './LoginCreate'
-import { LoginPasswordLost } from './LoginPasswordLost'
-import { LoginPasswordReset } from './LoginPasswordReset'
-import { NotFound } from 'Pages/NotFound'
+import { LoginCreate, LoginForm, LoginPasswordLost, LoginPasswordReset } from './'
+import { NotFound } from 'Pages'
 
 export const Login = () => {
   const { login } = useUserContext()

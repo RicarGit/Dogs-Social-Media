@@ -1,17 +1,12 @@
 import styled from "styled-components/macro"
-
 import { Route, Routes } from "react-router"
 import { BrowserRouter } from "react-router-dom"
 
 import { UserContextProvider } from "contexts/UserContext"
 
-import { Home, Login } from "Pages"
-import { Header, Footer } from "Components"
-import { User } from "Pages/User"
+import { Home, Login, User, NotFound, UserProfile } from "Pages"
+import { Header, Footer, Photo } from "Components"
 import { PrivateRoute } from "Components/PrivateRoute"
-import { Photo } from "Components/Photo"
-import { UserProfile } from "Pages/User/UserProfile"
-import { NotFound } from "Pages/NotFound"
 
 const Main = styled.main`
   padding: 0 1rem;

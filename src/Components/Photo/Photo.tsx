@@ -1,13 +1,12 @@
 import * as S from './Photo.styled'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useFetch } from 'hooks/useFetch'
-import { api } from 'services/api'
 
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Loading } from 'Components/Loading'
+import { api } from 'services/api'
+import { useFetch } from 'hooks/useFetch'
+
+import { ErrorInfo, Loading, Head } from 'Components'
 import { PhotoContent } from './PhotoContent'
-import { Head } from 'Components/Head'
 
 export const Photo = () => {
   const { id } = useParams()

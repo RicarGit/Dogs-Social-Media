@@ -1,12 +1,12 @@
 import * as S from './FeedPhotos.styled'
 import { useEffect } from "react"
-import { useFetch } from "hooks/useFetch"
+
 import { api } from "services/api"
+import { useFetch } from "hooks/useFetch"
 import { SetModalProps } from 'types/setModal'
 
 import { FeedPhotosItem } from "./FeedPhotosItem"
-import { ErrorInfo } from "Components/ErrorInfo"
-import { Loading } from "Components/Loading"
+import { ErrorInfo, Loading } from "Components"
 
 interface UserFeed extends SetModalProps {
   user: string

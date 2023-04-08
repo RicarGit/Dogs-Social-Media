@@ -1,14 +1,11 @@
 import * as S from './LoginForm.styled'
-import { Link } from 'react-router-dom'
 import { FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 
 import { useUserContext } from 'contexts/UserContext'
 import { useForm } from 'hooks/useForm'
 
-import { FormInput } from 'Components/FormInput'
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Button } from 'Components/Button'
-import { Head } from 'Components'
+import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginForm = () => {
   const username = useForm('email')

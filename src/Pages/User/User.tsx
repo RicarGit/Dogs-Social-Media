@@ -1,13 +1,10 @@
 import * as S from './User.styled'
 import { Route, Routes } from 'react-router-dom'
-
-import { Feed } from 'Components/Feed'
-import { UserHeader } from './UserHeader'
-import { UserStats } from './UserStats'
-import { UserPhotoPost } from './UserPhotoPost'
 import { useUserContext } from 'contexts/UserContext'
+
+import { Feed, Head } from 'Components'
 import { NotFound } from 'Pages/NotFound'
-import { Head } from 'Components'
+import { UserHeader, UserStats, UserPhotoPost } from './'
 
 export const User = () => {
   const { data } = useUserContext()

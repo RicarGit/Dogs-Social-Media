@@ -1,12 +1,13 @@
 import * as S from './PhotoCommentsForm.styled'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { ReactComponent as Enviar } from 'assets/enviar.svg'
-import { useFetch } from 'hooks/useFetch'
+
 import { api } from 'services/api'
+import { useFetch } from 'hooks/useFetch'
+import { CommentType, Single } from 'types'
 import { getStorageToken } from 'contexts/UserContext'
-import { CommentType } from 'types/photoComments'
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Single } from 'types/single'
+
+import { ReactComponent as Enviar } from 'assets/enviar.svg'
+import { ErrorInfo } from 'Components'
 
 interface CommentsFormId {
   id: number

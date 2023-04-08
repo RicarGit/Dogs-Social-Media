@@ -1,12 +1,11 @@
 import * as S from './PhotoContent.styled'
-import { useUserContext } from 'contexts/UserContext'
 import { Link } from 'react-router-dom'
-import { CommentsData } from 'types/photoComments'
-import { Single } from 'types/single'
 
-import { ImageSkeleton } from 'Components/ImageSkeleton'
-import { PhotoComments } from '../PhotoComments/PhotoComments'
-import { PhotoDelete } from '../PhotoDelete'
+import { CommentsData, Single } from 'types'
+import { useUserContext } from 'contexts/UserContext'
+
+import { ImageSkeleton } from 'Components'
+import { PhotoComments, PhotoDelete } from 'Components/Photo'
 
 export const PhotoContent = ({ commentsData, single }: CommentsData & Single) => {
   const { photo, comments } = commentsData

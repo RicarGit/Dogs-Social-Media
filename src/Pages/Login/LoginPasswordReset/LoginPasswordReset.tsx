@@ -1,14 +1,11 @@
 import * as S from './LoginPasswordReset.styled'
 import { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'hooks/useForm'
-import { useFetch } from 'hooks/useFetch'
-import { api } from 'services/api'
 
-import { FormInput } from 'Components/FormInput'
-import { Button } from 'Components/Button'
-import { ErrorInfo } from 'Components/ErrorInfo'
-import { Head } from 'Components'
+import { api } from 'services/api'
+import { useForm, useFetch } from 'hooks'
+
+import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginPasswordReset = () => {
   const [key, setKey] = useState('')
