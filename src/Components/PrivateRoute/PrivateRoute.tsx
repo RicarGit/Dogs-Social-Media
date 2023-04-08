@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { useUserContext } from "contexts/UserContext"
 import { Navigate } from 'react-router-dom'
+import { useUserContext } from "contexts/UserContext"
 
 interface PrivateRouteProps {
   children: ReactNode
