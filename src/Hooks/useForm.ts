@@ -17,11 +17,11 @@ const types: Types = {
     errorMessage: 'Nome inválido.'
   },
   email: {
-    regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+    regex: /^[a-zA-Z0-9]/,
     errorMessage: 'Preencha um email válido.'
   },
   password: {
-    regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+    regex: /^[a-zA-Z0-9]/,
     errorMessage: 'A senha precisa ter pelo menos 8 caracteres, incluindo letras e números.'
   },
   weight: {
