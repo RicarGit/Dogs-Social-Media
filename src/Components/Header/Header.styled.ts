@@ -8,7 +8,7 @@ export const Header = styled.header`
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  `
+`
 
 export const Navigation = styled.nav`
   margin: 0 auto;
@@ -39,8 +39,4 @@ export const Navigation = styled.nav`
     position: relative;
     top: -1px;
   }
-`
-
-export const LogoutButton = styled.button`
-
 `
