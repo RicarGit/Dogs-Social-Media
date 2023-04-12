@@ -150,5 +150,16 @@ export const api = {
         body: JSON.stringify(body)
       },
     }
+  },
+  STATS_GET: (token: string) => {
+    return {
+      url: `${API_URL}/api/stats`,
+      options: {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      },
+    }
   }
 }
