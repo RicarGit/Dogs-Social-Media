@@ -1,7 +1,12 @@
 import * as S from './UserStatsGraphs.styled'
 import { useState } from "react"
+import { UsersStats } from 'types'
 
-export const UserStatsGraphs = () => {
+interface UserGraphsInfo {
+  data: UsersStats
+}
+
+export const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
   const [graph, setGraph] = useState([])
   const [total, setTotal] = useState(0)
 
