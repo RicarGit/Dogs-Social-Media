@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { photoInfo } from './photoInfo'
 
-const commentType = z.object({
+export const commentType = z.object({
   user_id: z.string(),
   comment_ID: z.string(),
   comment_post_ID: z.string(),
@@ -10,7 +10,7 @@ const commentType = z.object({
   comment_date: z.string(),
 })
 
-const photoCommentsData = z.object({
+export const photoCommentsData = z.object({
   comments: z.array(commentType),
   photo: photoInfo
 })
