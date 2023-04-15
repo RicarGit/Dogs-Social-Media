@@ -1,3 +1,12 @@
-import { PhotoInfo } from "./photoInfo"
+import { z } from "zod"
 
-export type UserStatsInfo = Pick<PhotoInfo, 'id' | 'title' | 'acessos'>
+export const userStatsInfo = z.object({
+  id: z.number(),
+  title: z.string(),
+  acessos: z.string()
+})
+
+export const usersStats = z.array(userStatsInfo)
+
+export type UsersStats = z.infer<typeof usersStats>
+export type UserStatsInfo = z.infer<typeof userStatsInfo>
