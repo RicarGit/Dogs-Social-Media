@@ -6,6 +6,7 @@ import { getStorageToken } from "contexts/UserContext"
 
 import { ErrorInfo, Head, Loading } from "Components"
 import { UserStatsGraphs } from "./UserStatsGraphs"
+import { usersStats } from "types"
 
 export const UserStats = () => {
   const { data, error, loading, request } = useFetch()
@@ -29,7 +30,7 @@ export const UserStats = () => {
   return (
     <div>
       <Head title='Estatísticas' />
-      <UserStatsGraphs />
+      <UserStatsGraphs data={usersStats.parse(data)} />
     </div>
   )
 }
