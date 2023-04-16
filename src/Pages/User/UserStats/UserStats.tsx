@@ -1,12 +1,12 @@
-import { useEffect } from "react"
+import { lazy, useEffect, Suspense } from "react"
 
 import { api } from "services/api"
 import { useFetch } from "hooks"
+import { usersStats } from "types"
 import { getStorageToken } from "contexts/UserContext"
 
 import { ErrorInfo, Head, Loading } from "Components"
-import { UserStatsGraphs } from "./UserStatsGraphs"
-import { usersStats } from "types"
+const UserStatsGraphs = lazy(() => import('./UserStatsGraphs/UserStatsGraphs'))
 
 export const UserStats = () => {
   const { data, error, loading, request } = useFetch()
@@ -28,9 +28,9 @@ export const UserStats = () => {
   if (!data) return null
 
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       <Head title='Estatísticas' />
       <UserStatsGraphs data={usersStats.parse(data)} />
-    </div>
+    </Suspense>
   )
 }
