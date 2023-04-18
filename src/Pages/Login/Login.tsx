@@ -11,7 +11,7 @@ export const Login = () => {
 
   return (
     <S.Login>
-      <S.FormsContainer className='animeLeft'>
+      <S.FormsContainer>
         <Routes>
           <Route path='/' element={<LoginForm />} />
           <Route path='criar' element={<LoginCreate />} />

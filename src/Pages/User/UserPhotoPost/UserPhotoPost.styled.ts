@@ -9,10 +9,10 @@ export const UserPhotoPostSection = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
-`
 
-export const UserPhotoPostForm = styled.form`
-  
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const InputFile = styled.input`
@@ -28,4 +28,8 @@ export const ImagePreview = styled.img<Preview>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 40rem) {
+    height: 450px;
+  }
 `

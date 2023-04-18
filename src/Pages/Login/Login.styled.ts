@@ -26,6 +26,7 @@ export const Login = styled.section`
 export const FormsContainer = styled.div`
   max-width: 30rem;
   padding: 1rem;
+  margin-top: 20vh;
 
   @media (max-width: 50rem) {
     max-width: 100%;
