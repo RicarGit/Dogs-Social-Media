@@ -1,4 +1,3 @@
-import * as S from './LoginCreate.styled'
 import { FormEvent } from 'react'
 
 import { api } from 'services/api'
@@ -36,11 +35,11 @@ export const LoginCreate = () => {
   }
 
   return (
-    <S.LoginCreate>
+    <section className='animeLeft'>
       <Head title='Crie Sua Conta' />
       <h1>Cadastre-se</h1>
 
-      <S.LoginCreateForm onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <FormInput
           labelText='Usuário'
           type='text'
@@ -64,7 +63,7 @@ export const LoginCreate = () => {
           : <Button>Cadastrar</Button>
         }
         <ErrorInfo error={error} />
-      </S.LoginCreateForm>
-    </S.LoginCreate>
+      </form>
+    </section>
   )
 }

@@ -1,4 +1,3 @@
-import * as S from './LoginPasswordReset.styled'
 import { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -35,21 +34,19 @@ export const LoginPasswordReset = () => {
   }
 
   return (
-    <S.LoginPasswordReset onSubmit={handleSubmit}>
+    <section onSubmit={handleSubmit}>
       <Head title='Resete a Senha' />
-      <S.PasswordResetTitle>
-        Reset a Senha
-      </S.PasswordResetTitle>
+      <h1>Resete a Senha</h1>
 
-      <S.PasswordResetForm>
+      <form>
         <FormInput labelText="Nova Senha" type="password" name="password" {...password} />
         {loading
           ? <Button disabled >Resetando...</Button>
           : <Button>Resetar</Button>
         }
-      </S.PasswordResetForm>
+      </form>
 
       <ErrorInfo error={error} />
-    </S.LoginPasswordReset>
+    </section>
   )
 }

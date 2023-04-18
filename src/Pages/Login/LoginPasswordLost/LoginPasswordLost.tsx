@@ -1,6 +1,4 @@
-import * as S from './LoginPasswordLost.styled'
 import { FormEvent } from 'react'
-
 import { api } from 'services/api'
 import { useForm, useFetch } from 'hooks'
 
@@ -21,23 +19,22 @@ export const LoginPasswordLost = () => {
   }
 
   return (
-    <S.LoginPasswordLost>
+    <section className='animeLeft' >
       <Head title='Recupere a Senha' />
-      <S.PasswordLostTitle>
-        Perdeu a senha?
-      </S.PasswordLostTitle>
+      <h1>Perdeu a senha?</h1>
+
       {data
-        ? <S.SendedEmailMessage>Email enviado.</S.SendedEmailMessage>
-        : <S.PasswordLostForm onSubmit={handleSubmit}>
+        ? <p style={{ color: '#4c1' }}>Email enviado.</p>
+        : <form onSubmit={handleSubmit}>
           <FormInput labelText='Email / Usuário' type='text' name='email' {...login} />
           {loading
             ? <Button disabled >Enviando...</Button>
             : <Button>Enviar Email</Button>
           }
-        </S.PasswordLostForm>
+        </form>
       }
 
       <ErrorInfo error={error} />
-    </S.LoginPasswordLost>
+    </section>
   )
 }
