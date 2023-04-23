@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { PhotoInfo, SetModal } from "types"
 
 import { FeedModal, FeedPhotos } from "./"
@@ -12,9 +12,9 @@ export const Feed = ({ user }: UserId) => {
   const [pages, setPages] = useState<number[]>([1])
   const [hasMorePages, setHasMorePages] = useState(true)
 
-  const finalPage = () => {
+  const finalPage = useCallback(() => {
     setHasMorePages(false)
-  }
+  }, [])
 
   useEffect(() => {
     let wait = false
