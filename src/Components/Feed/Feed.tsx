@@ -24,7 +24,7 @@ export const Feed = ({ user }: UserId) => {
         const scrollPosition = window.scrollY
         const screenHeight = document.body.offsetHeight - window.innerHeight
 
-        if ((scrollPosition > screenHeight * 0.75) && !wait) {
+        if ((scrollPosition > screenHeight * 0.75) && wait === false) {
           setPages(pages => [...pages, pages.length + 1])
           wait = true
 
