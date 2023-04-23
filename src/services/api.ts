@@ -6,7 +6,7 @@ interface BodyProps {
 
 interface PhotosGet {
   page: number
-  total: number
+  photosPerPage: number
   user: string
 }
 
@@ -85,9 +85,9 @@ export const api = {
       }
     }
   },
-  PHOTOS_GET: ({ page, total, user }: PhotosGet) => {
+  PHOTOS_GET: ({ page, photosPerPage, user }: PhotosGet) => {
     return {
-      url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+      url: `${API_URL}/api/photo/?_page=${page}&_total=${photosPerPage}&_user=${user}`,
       options: {
         method: 'GET',
         Cache: 'no-storage'

@@ -16,14 +16,14 @@ interface UserFeed extends SetModalProps {
 
 export const FeedPhotos = ({ setModal, user, page, finalPage }: UserFeed) => {
   const { data, error, loading, request } = useFetch()
-  const total = 6
+  const photosPerPage = 6
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const { url, options } = api.PHOTOS_GET({ page, total, user })
+      const { url, options } = api.PHOTOS_GET({ page, photosPerPage, user })
       const { response, json } = await request(url, options)
 
-      if (response && response.ok && json && Array.isArray(json) && json.length < total) {
+      if (response && response.ok && json && Array.isArray(json) && json.length < photosPerPage) {
         finalPage()
       }
     }
