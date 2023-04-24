@@ -53,6 +53,10 @@ export const Feed = ({ user }: UserId) => {
       {pages.map(page =>
         <FeedPhotos key={page} setModal={setModal} user={user} page={page} finalPage={finalPage} />
       )}
+      {!hasMorePages &&
+        <p style={{ margin: '70px 0', color: '#333', textAlign: 'center' }}>
+          Oops! Não existem mais postagens.
+        </p>}
     </>
   )
 }
