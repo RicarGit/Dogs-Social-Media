@@ -50,9 +50,10 @@ export const LoginForm = () => {
         <h2>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>
 
-        <Button>
-          <Link className='createAccount' to={'criar'}>Cadastro</Link>
-        </Button>
+        <Link className='createAccount' to={'criar'}>
+          <Button>Cadastro</Button>
+        </Link>
+
       </S.Register>
     </S.LoginFormContainer>
   )
