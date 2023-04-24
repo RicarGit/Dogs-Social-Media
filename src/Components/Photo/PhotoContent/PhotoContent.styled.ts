@@ -6,6 +6,7 @@ export const PhotoContent = styled.div`
   ${({ single }: Single) => css`
     height: ${single ? "auto" : "36rem"};
     border-radius: ${single ? ".2rem" : ".4rem"};
+    margin-bottom: 30px;
     background-color: #fff;
     display: grid;
     grid-template-columns: ${single ? "1fr" : "36rem 20rem"};
@@ -56,10 +57,6 @@ export const Views = styled.span`
     margin-right: .5rem;
     background: url(${views});
   }
-`
-
-export const PostTitle = styled.h1`
-
 `
 
 export const AttributesList = styled.ul`

@@ -24,9 +24,9 @@ export const PhotoContent = ({ commentsData, single }: CommentsData & Single) =>
           <S.Views>{photo.acessos}</S.Views>
         </S.Author>
 
-        <S.PostTitle>
+        <h1>
           <Link to={`/foto/${photo.id}`} >{photo.title}</Link>
-        </S.PostTitle>
+        </h1>
 
         <S.AttributesList>
           <S.Attribute>{photo.peso} kg</S.Attribute>
