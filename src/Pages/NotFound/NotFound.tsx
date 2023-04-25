@@ -1,15 +1,13 @@
-import * as S from './NotFound.styled'
-
 export const NotFound = () => {
   return (
-    <S.NotFound>
-      <S.ErrorTitle>
+    <section>
+      <h1>
         Erro: 404
-      </S.ErrorTitle>
+      </h1>
 
-      <S.ErrorDescription>
+      <p>
         Página não encontrada.
-      </S.ErrorDescription>
-    </S.NotFound>
+      </p>
+    </section>
   )
 }

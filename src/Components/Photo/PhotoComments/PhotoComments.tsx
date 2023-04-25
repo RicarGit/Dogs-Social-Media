@@ -33,8 +33,8 @@ export const PhotoComments = ({ id, comments, single }: PhotoCommentsInfo) => {
       <S.PhotoComments single={single} ref={commentSection}>
         {commentaries.map(comment => (
           <S.PhotoComment key={comment.comment_ID}>
-            <S.CommentAuthor>{comment.comment_author}: </S.CommentAuthor>
-            <S.CommentContent>{comment.comment_content}</S.CommentContent>
+            <b>{comment.comment_author}: </b>
+            <span>{comment.comment_content}</span>
           </S.PhotoComment>
         ))}
       </S.PhotoComments>

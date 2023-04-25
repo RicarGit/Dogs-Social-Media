@@ -102,10 +102,6 @@ export const UserHeaderNav = styled.nav`
   }
 `
 
-export const LogoutButton = styled.button`
-
-`
-
 export const MobileButton = styled.button`
   background-color: #eee;
   border: 1px solid transparent;
@@ -145,4 +141,4 @@ export const MobileButton = styled.button`
     height: 4px;
     box-shadow: 0 8px currentColor, 0 -8px currentColor;
   }
-  `
+`

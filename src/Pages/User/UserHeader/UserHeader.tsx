@@ -59,10 +59,10 @@ export const UserHeader = () => {
           {mobile && 'Adicionar Foto'}
         </NavLink>
 
-        <S.LogoutButton onClick={userLogout}>
+        <button onClick={userLogout}>
           <LogoutIcon />
           {mobile && 'Sair'}
-        </S.LogoutButton>
+        </button>
       </S.UserHeaderNav>
     </S.UserHeader>
   )

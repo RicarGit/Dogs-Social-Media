@@ -11,11 +11,3 @@ export const PhotoComment = styled.li`
   margin-bottom: .5rem;
   line-height: 1.2;
 `
-
-export const CommentAuthor = styled.b`
-
-`
-
-export const CommentContent = styled.span`
-
-`
