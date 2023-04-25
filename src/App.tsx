@@ -6,7 +6,7 @@ import { UserContextProvider } from "contexts/UserContext"
 
 import { Home, Login, User, NotFound, UserProfile } from "Pages"
 import { Header, Footer, Photo } from "Components"
-import { PrivateRoute } from "Components/PrivateRoute"
+import { PrivateRoute } from "routes/PrivateRoute"
 
 const AppContainer = styled.div`
   display: flex;
