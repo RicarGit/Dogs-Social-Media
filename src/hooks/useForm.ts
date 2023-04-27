@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 
 interface Change {
   target: HTMLInputElement
@@ -44,7 +44,7 @@ export const useForm = (type: keyof Types) => {
 
   const { regex, errorMessage } = types[type]
 
-  const validate = (value: string) => {
+  const validate = useCallback((value: string) => {
     if (!type) return true
 
     if (value.length <= 0) {
@@ -59,14 +59,15 @@ export const useForm = (type: keyof Types) => {
 
     setError(null)
     return true
-  }
+  }, [errorMessage, regex, type])
 
-  const onChange = ({ target }: Change) => {
+  const onChange = useCallback(({ target }: Change) => {
     if (error) validate(target.value)
-    setValue(target.value)
-  }
 
-  const onBlur = () => validate(value)
+    setValue(target.value)
+  }, [error, validate])
+
+  const onBlur = useCallback(() => validate(value), [validate, value])
 
   return {
     value,
