@@ -24,7 +24,7 @@ const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
     const graphData = data.map(({ title, acessos }) => (
       {
         x: title,
-        y: Number(acessos)
+        y: Number(acessos) | 1
       }
     ))
 
@@ -40,10 +40,11 @@ const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
 
       <S.GraphContainer>
         <VictoryPie
-          data={graph}
+          data={graph.length ? graph : undefined}
           innerRadius={70}
           padAngle={3}
           padding={{ top: 20, bottom: 20, left: 80, right: 80 }}
+          colorScale='warm'
           style={{
             data: {
               fillOpacity: .9,
@@ -61,7 +62,7 @@ const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
       <S.GraphContainer>
         <VictoryChart>
           <VictoryBar
-            data={graph}
+            data={graph.length ? graph : undefined}
             alignment='start'
             style={{
               data: {
