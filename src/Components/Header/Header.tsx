@@ -1,11 +1,12 @@
 import * as S from './Header.styled'
 import { Link } from 'react-router-dom'
 
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 import { ReactComponent as Dogs } from 'assets/dogs.svg'
 
 export const Header = () => {
-  const { data, login } = useUserContext()
+  const login = useContextStore(state => state.login)
+  const data = useContextStore(state => state.data)
 
   return (
     <S.Header>

@@ -1,13 +1,14 @@
 import * as S from './Login.styled'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 
 import { LoginCreate, LoginForm, LoginPasswordLost, LoginPasswordReset } from './'
 import { NotFound } from 'Pages'
 
 export const Login = () => {
-  const { login } = useUserContext()
+  const login = useContextStore(state => state.login)
   if (login) return <Navigate to={'/conta'} />
+
 
   return (
     <S.Login>

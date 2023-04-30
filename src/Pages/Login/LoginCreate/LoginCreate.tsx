@@ -1,8 +1,8 @@
-import { FormEvent } from 'react'
+import { FormEvent, useCallback } from 'react'
 
 import { api } from 'services/api'
 import { useForm, useFetch } from 'hooks'
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
@@ -11,7 +11,7 @@ export const LoginCreate = () => {
   const email = useForm('email')
   const password = useForm('password')
 
-  const { userLogin } = useUserContext()
+  const userLogin = useContextStore(useCallback(state => state.userLogin, []))
   const { loading, error, request } = useFetch()
 
   const handleSubmit = async (event: FormEvent) => {

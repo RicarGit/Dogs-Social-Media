@@ -1,8 +1,8 @@
 import * as S from './LoginForm.styled'
-import { FormEvent } from 'react'
+import { FormEvent, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 import { useForm } from 'hooks/useForm'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
@@ -10,7 +10,10 @@ import { Head, Button, FormInput, ErrorInfo } from 'Components'
 export const LoginForm = () => {
   const username = useForm('email')
   const password = useForm('password')
-  const { userLogin, loading, error } = useUserContext()
+
+  const userLogin = useContextStore(useCallback(state => state.userLogin, []))
+  const loading = useContextStore(state => state.loading)
+  const error = useContextStore(state => state.error)
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()

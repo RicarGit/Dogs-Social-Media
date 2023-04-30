@@ -2,14 +2,14 @@ import * as S from './PhotoContent.styled'
 import { Link } from 'react-router-dom'
 
 import { CommentsData, Single } from 'types'
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 
 import { ImageSkeleton } from 'Components'
 import { PhotoComments, PhotoDelete } from 'Components/Photo'
 
 export const PhotoContent = ({ commentsData, single }: CommentsData & Single) => {
   const { photo, comments } = commentsData
-  const { data } = useUserContext()
+  const data = useContextStore(state => state.data)
 
   return (
     <S.PhotoContent single={single} >

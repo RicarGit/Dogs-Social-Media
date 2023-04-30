@@ -2,7 +2,7 @@ import * as S from './PhotoComments.styled'
 import { useEffect, useRef, useState } from 'react'
 
 import { CommentType, Single } from 'types'
-import { useUserContext } from 'contexts/UserContext'
+import { useContextStore } from 'contexts/useContextStore'
 
 import { PhotoCommentsForm } from './PhotoCommentsForm'
 
@@ -14,7 +14,7 @@ interface PhotoCommentsInfo extends Single {
 export const PhotoComments = ({ id, comments, single }: PhotoCommentsInfo) => {
   const [commentaries, setCommentaries] = useState(comments)
   const commentSection = useRef<HTMLUListElement>(null)
-  const { login } = useUserContext()
+  const login = useContextStore(state => state.login)
 
   useEffect(() => {
     const commentListElement = commentSection.current

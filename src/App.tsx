@@ -1,12 +1,12 @@
 import styled from "styled-components/macro"
-import { Route, Routes } from "react-router"
 import { BrowserRouter } from "react-router-dom"
-
-import { UserContextProvider } from "contexts/UserContext"
+import { Route, Routes } from "react-router"
+import { PrivateRoute } from "routes/PrivateRoute"
 
 import { Home, Login, User, NotFound, UserProfile } from "Pages"
 import { Header, Footer, Photo } from "Components"
-import { PrivateRoute } from "routes/PrivateRoute"
+import { useCallback, useEffect } from "react"
+import { useContextStore } from "contexts/useContextStore"
 
 const AppContainer = styled.div`
   display: flex;

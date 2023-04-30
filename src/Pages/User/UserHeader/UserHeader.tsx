@@ -1,7 +1,7 @@
 import * as S from './UserHeader.styled'
-import { NavLink, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useUserContext } from 'contexts/UserContext'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState, useCallback } from 'react'
+import { useContextStore } from 'contexts/useContextStore'
 import { useMedia } from 'hooks/useMedia'
 
 import { ReactComponent as MyFeedIcon } from 'assets/feed.svg'
@@ -12,8 +12,10 @@ import { ReactComponent as LogoutIcon } from 'assets/sair.svg'
 export const UserHeader = () => {
   const [title, setTitle] = useState('')
   const [menuMobile, setMenuMobile] = useState(false)
+
+  const userLogout = useContextStore(useCallback(state => state.userLogout, []))
   const { pathname } = useLocation()
-  const { userLogout } = useUserContext()
+  const navigate = useNavigate()
   const mobile = useMedia('(max-width: 40rem)')
 
   useEffect(() => {
