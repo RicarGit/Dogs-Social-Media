@@ -1,8 +1,8 @@
 import * as S from './UserPhotoPost.styled'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { getStorageToken } from 'contexts/UserContext'
-import { api } from 'services/api'
 
+import { api } from 'services/api'
+import { getStorageToken } from 'helpers/getStoregeToken'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'hooks/useForm'
 import { useFetch } from 'hooks/useFetch'
@@ -15,12 +15,13 @@ interface ImageData {
 }
 
 export const UserPhotoPost = () => {
-  const imgName = useForm('imgName')
-  const weight = useForm('weight')
-  const age = useForm('age')
   const [img, setImg] = useState<ImageData>({ preview: null, raw: null })
   const { data, error, loading, request } = useFetch()
   const navigate = useNavigate()
+
+  const imgName = useForm('imgName')
+  const weight = useForm('weight')
+  const age = useForm('age')
 
   useEffect(() => {
     if (data) navigate('/conta')

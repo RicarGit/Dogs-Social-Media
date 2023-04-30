@@ -1,5 +1,5 @@
 import * as S from './PhotoDelete.styled'
-import { getStorageToken } from 'contexts/UserContext'
+import { getStorageToken } from 'helpers/getStoregeToken'
 import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
 

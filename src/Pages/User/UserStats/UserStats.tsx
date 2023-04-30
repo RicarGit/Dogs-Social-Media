@@ -3,7 +3,7 @@ import { lazy, useEffect, Suspense } from "react"
 import { api } from "services/api"
 import { useFetch } from "hooks"
 import { usersStats } from "types"
-import { getStorageToken } from "contexts/UserContext"
+import { getStorageToken } from "helpers/getStoregeToken"
 
 import { ErrorInfo, Head, Loading } from "Components"
 const UserStatsGraphs = lazy(() => import('./UserStatsGraphs/UserStatsGraphs'))

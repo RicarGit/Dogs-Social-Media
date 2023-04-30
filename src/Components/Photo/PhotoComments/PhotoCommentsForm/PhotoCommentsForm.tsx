@@ -4,10 +4,10 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { api } from 'services/api'
 import { useFetch } from 'hooks/useFetch'
 import { CommentType, Single } from 'types'
-import { getStorageToken } from 'contexts/UserContext'
 
 import { ReactComponent as Enviar } from 'assets/enviar.svg'
 import { ErrorInfo } from 'Components'
+import { getStorageToken } from 'helpers/getStoregeToken'
 
 interface CommentsFormId {
   id: number
