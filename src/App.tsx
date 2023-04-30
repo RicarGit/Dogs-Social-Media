@@ -22,26 +22,24 @@ export function App() {
   return (
     <AppContainer>
       <BrowserRouter>
-        <UserContextProvider>
-          <Header />
+        <Header />
 
-          <Main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="login/*" element={<Login />} />
-              <Route path="foto/:id" element={<Photo />} />
-              <Route path="perfil/:user" element={<UserProfile />} />
-              <Route path="conta/*" element={
-                <PrivateRoute>
-                  <User />
-                </PrivateRoute>
-              } />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Main>
+        <Main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login/*" element={<Login />} />
+            <Route path="foto/:id" element={<Photo />} />
+            <Route path="perfil/:user" element={<UserProfile />} />
+            <Route path="conta/*" element={
+              <PrivateRoute>
+                <User />
+              </PrivateRoute>
+            } />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Main>
 
-          <Footer />
-        </UserContextProvider>
+        <Footer />
       </BrowserRouter>
     </AppContainer>
   )
