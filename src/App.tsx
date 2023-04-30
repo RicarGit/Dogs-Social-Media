@@ -19,6 +19,12 @@ const Main = styled.main`
 `
 
 export function App() {
+  const autoLogin = useContextStore(useCallback(state => state.autoLogin, []))
+
+  useEffect(() => {
+    autoLogin()
+  }, [autoLogin])
+
   return (
     <AppContainer>
       <BrowserRouter>
