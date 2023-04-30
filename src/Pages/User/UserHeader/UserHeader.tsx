@@ -34,6 +34,11 @@ export const UserHeader = () => {
     setMenuMobile(false)
   }, [pathname])
 
+  const handleLogout = () => {
+    userLogout()
+    navigate('/login')
+  }
+
   return (
     <S.UserHeader>
       <h1 className='title'>{title}</h1>
@@ -61,7 +66,7 @@ export const UserHeader = () => {
           {mobile && 'Adicionar Foto'}
         </NavLink>
 
-        <button onClick={userLogout}>
+        <button onClick={handleLogout}>
           <LogoutIcon />
           {mobile && 'Sair'}
         </button>
