@@ -8,7 +8,7 @@ import { useForm } from 'hooks/useForm'
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginForm = () => {
-  const username = useForm('email')
+  const username = useForm('username')
   const password = useForm('password')
 
   const userLogin = useContextStore(useCallback(state => state.userLogin, []))
