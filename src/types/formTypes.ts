@@ -23,4 +23,11 @@ export const loginFormSchema = z.object({
     .max(10, 'Utilize no máximo 10 caracteres.')
 })
 
+export const loginCreateSchema = loginFormSchema.extend({
+  email: z.string().email('Digite um email válido.')
+})
+
 export type RegisterType<T extends FieldValues> = ReturnType<UseFormRegister<T>>
+export type FormInputProps = z.infer<typeof formInputSchema>
+export type LoginFormType = z.infer<typeof loginFormSchema>
+export type LoginCreateFormType = z.infer<typeof loginCreateSchema>
