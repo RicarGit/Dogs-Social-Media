@@ -1,33 +1,35 @@
-import { FormEvent, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { api } from 'services/api'
-import { useForm, useFetch } from 'hooks'
+import { useFetch } from 'hooks'
 import { useContextStore } from 'contexts/useContextStore'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
+import { useForm } from 'react-hook-form'
+import { LoginCreateFormType, loginCreateSchema } from 'types/formTypes'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 export const LoginCreate = () => {
-  const username = useForm('username')
-  const email = useForm('email')
-  const password = useForm('password')
-
-  const userLogin = useContextStore(useCallback(state => state.userLogin, []))
   const { loading, error, request } = useFetch()
+  const userLogin = useContextStore(useCallback(state => state.userLogin, []))
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault()
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginCreateFormType>({
+    resolver: zodResolver(loginCreateSchema)
+  })
 
-    const { url, options } = api.USER_POST({
-      username: username.value,
-      password: password.value,
-      email: email.value
-    })
+  const onSubmit = async (data: LoginCreateFormType) => {
+    const userData = {
+      username: data.username,
+      password: data.password,
+      email: data.email
+    }
+    const { url, options } = api.USER_POST(userData)
 
     try {
       const { response } = await request(url, options)
 
       if (response?.ok) {
-        userLogin(username.value, password.value)
+        userLogin(data.username, data.password)
       }
     } catch (error) {
       console.error(error)
@@ -39,25 +41,28 @@ export const LoginCreate = () => {
       <Head title='Crie Sua Conta' />
       <h1>Cadastre-se</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <FormInput
-          labelText='Usuário'
+          label='Usuário'
           type='text'
-          name='username'
-          {...username}
+          error={errors.username?.message}
+          {...register('username')}
         />
+
         <FormInput
-          labelText='Email'
+          label='Email'
           type='email'
-          name='email'
-          {...email}
+          error={errors.email?.message}
+          {...register('email')}
         />
+
         <FormInput
-          labelText='Senha'
+          label='Senha'
           type='password'
-          name='password'
-          {...password}
+          error={errors.password?.message}
+          {...register('password')}
         />
+
         <Button disabled={loading}>
           {loading ? 'Cadastrando...' : 'Cadastrar'}
         </Button>
