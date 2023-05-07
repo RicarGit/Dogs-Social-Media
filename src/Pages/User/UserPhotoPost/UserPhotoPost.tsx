@@ -1,11 +1,12 @@
 import * as S from './UserPhotoPost.styled'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 import { api } from 'services/api'
 import { getStorageToken } from 'helpers/getStoregeToken'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'hooks/useForm'
 import { useFetch } from 'hooks/useFetch'
+import { useForm } from 'react-hook-form'
+import { PhotoPostFormType } from 'types'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
@@ -19,23 +20,20 @@ export const UserPhotoPost = () => {
   const { data, error, loading, request } = useFetch()
   const navigate = useNavigate()
 
-  const imgName = useForm('imgName')
-  const weight = useForm('weight')
-  const age = useForm('age')
+  const { register, handleSubmit, formState: { errors } } = useForm<PhotoPostFormType>()
 
   useEffect(() => {
     if (data) navigate('/conta')
   }, [data, navigate])
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-
+  const onSubmit = (data: PhotoPostFormType) => {
     const token = getStorageToken()
     const formData = new FormData()
-    formData.append('img', img.raw as File)
-    formData.append('nome', imgName.value)
-    formData.append('peso', weight.value)
-    formData.append('idade', age.value)
+
+    formData.append('img', data.image[0])
+    formData.append('nome', data.name)
+    formData.append('peso', String(data.weight))
+    formData.append('idade', String(data.age))
 
     if (token) {
       const { url, options } = api.PHOTO_POST(formData, token)
@@ -57,8 +55,13 @@ export const UserPhotoPost = () => {
   return (
     <S.UserPhotoPostSection className='animeLeft'>
       <Head title='Poste sua foto' />
-        <Button disabled={loading}>{loading ? 'Enviando...' : 'Enviar'}</Button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormInput label='Nome' type='text' error={errors.name?.message} {...register('name')} />
+        <FormInput label='Peso' type='number' error={errors.name?.message} {...register('weight')} />
+        <FormInput label='Idade' type='number' error={errors.name?.message} {...register('age')} />
+        <S.InputFile type='file' id='img' {...register('image', { onChange: handleImgChange })} />
 
+        <Button disabled={loading}>{loading ? 'Enviando...' : 'Enviar'}</Button>
         <ErrorInfo error={error} />
       </form>
 
