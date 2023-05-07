@@ -9,7 +9,6 @@ export const Login = () => {
   const login = useContextStore(state => state.login)
   if (login) return <Navigate to={'/conta'} />
 
-
   return (
     <S.Login>
       <S.FormsContainer>
