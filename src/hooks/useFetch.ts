@@ -26,6 +26,7 @@ export const useFetch = () => {
       if (error instanceof Error) {
         json = null
         setError(error.message)
+        setLoading(false)
       }
     }
 
