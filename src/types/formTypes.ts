@@ -27,7 +27,15 @@ export const loginCreateSchema = loginFormSchema.extend({
   email: z.string().email('Digite um email válido.')
 })
 
+export const photoPostSchema = z.object({
+  name: z.string(),
+  weight: z.number(),
+  age: z.number(),
+  image: z.instanceof(FileList)
+})
+
 export type RegisterType<T extends FieldValues> = ReturnType<UseFormRegister<T>>
 export type FormInputProps = z.infer<typeof formInputSchema>
 export type LoginFormType = z.infer<typeof loginFormSchema>
 export type LoginCreateFormType = z.infer<typeof loginCreateSchema>
+export type PhotoPostFormType = z.infer<typeof photoPostSchema>
