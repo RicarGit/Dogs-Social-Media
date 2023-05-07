@@ -58,10 +58,10 @@ export const LoginCreate = () => {
           name='password'
           {...password}
         />
-        {loading
-          ? <Button disabled>Cadastrando...</Button>
-          : <Button>Cadastrar</Button>
-        }
+        <Button disabled={loading}>
+          {loading ? 'Cadastrando...' : 'Cadastrar'}
+        </Button>
+
         <ErrorInfo error={error} />
       </form>
     </section>

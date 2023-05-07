@@ -41,10 +41,11 @@ export const LoginForm = () => {
           labelText='Senha'
           {...password}
         />
-        {loading ?
-          <Button disabled>Carregando...</Button> :
-          <Button>Entrar</Button>
-        }
+
+        <Button disabled={loading}>
+          {loading ? 'Carregando...' : 'Entrar'}
+        </Button>
+
         <ErrorInfo error={error && 'Email ou senha incorreto.'} />
       </S.LoginForm>
 

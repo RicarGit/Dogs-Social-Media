@@ -57,15 +57,8 @@ export const UserPhotoPost = () => {
   return (
     <S.UserPhotoPostSection className='animeLeft'>
       <Head title='Poste sua foto' />
-      <form onSubmit={handleSubmit}>
-        <FormInput labelText='Nome' type='text' name='nome' {...imgName} />
-        <FormInput labelText='Peso' type='number' name='peso' {...weight} />
-        <FormInput labelText='Idade' type='number' name='idade' {...age} />
-        <S.InputFile type='file' name='img' id='img' onChange={handleImgChange} />
-        {loading
-          ? <Button disabled>Enviando...</Button>
-          : <Button>Enviar</Button>
-        }
+        <Button disabled={loading}>{loading ? 'Enviando...' : 'Enviar'}</Button>
+
         <ErrorInfo error={error} />
       </form>
 
