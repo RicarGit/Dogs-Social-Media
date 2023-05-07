@@ -1,26 +1,25 @@
 import * as S from './LoginForm.styled'
-import { FormEvent, useCallback } from 'react'
+import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LoginFormType, loginFormSchema } from 'types/formTypes'
 import { useContextStore } from 'contexts/useContextStore'
-import { useForm } from 'hooks/useForm'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginForm = () => {
-  const username = useForm('username')
-  const password = useForm('password')
-
   const userLogin = useContextStore(useCallback(state => state.userLogin, []))
   const loading = useContextStore(state => state.loading)
   const error = useContextStore(state => state.error)
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault()
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormType>({
+    resolver: zodResolver(loginFormSchema)
+  })
 
-    if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value)
-    }
+  const onSubmit = (data: LoginFormType) => {
+    userLogin(data.username, data.password)
   }
 
   return (
@@ -28,24 +27,22 @@ export const LoginForm = () => {
       <Head title='Faça Login' />
       <h1>Login</h1>
 
-      <S.LoginForm action='' onSubmit={handleSubmit}>
+      <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
         <FormInput
-          name='username'
           type='text'
-          labelText='Usuário'
-          {...username}
-        />
-        <FormInput
-          name='password'
-          type='text'
-          labelText='Senha'
-          {...password}
+          label='Usuário'
+          error={errors.username?.message}
+          {...register('username')}
         />
 
-        <Button disabled={loading}>
-          {loading ? 'Carregando...' : 'Entrar'}
-        </Button>
+        <FormInput
+          type='password'
+          label='Senha'
+          error={errors.password?.message}
+          {...register('password')}
+        />
 
+        <Button disabled={loading}>{loading ? 'Carregando...' : 'Entrar'}</Button>
         <ErrorInfo error={error && 'Email ou senha incorreto.'} />
       </S.LoginForm>
 
