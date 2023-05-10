@@ -1,20 +1,23 @@
-import { FormEvent } from 'react'
 import { api } from 'services/api'
-import { useForm, useFetch } from 'hooks'
+import { useFetch } from 'hooks'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { FormEmailType, emailSchema } from 'types'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
 
 export const LoginPasswordLost = () => {
-  const login = useForm('email')
   const { data, loading, error, request } = useFetch()
+  const { handleSubmit, register, formState: { errors } } = useForm<FormEmailType>({
+    resolver: zodResolver(emailSchema)
+  })
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault()
+  const onSubmit = ({ email }: FormEmailType) => {
     const resetUrl = window.location.href.replace('perdeu', 'resetar')
 
-    if (login.validate()) {
-      const { url, options } = api.PASSWORD_LOST({ login: login.value, url: resetUrl })
-      await request(url, options)
+    if (email) {
+      const { url, options } = api.PASSWORD_LOST({ login: email, url: resetUrl })
+      request(url, options)
     }
   }
 
@@ -25,12 +28,14 @@ export const LoginPasswordLost = () => {
 
       {data
         ? <p style={{ color: '#4c1' }}>Email enviado.</p>
-        : <form onSubmit={handleSubmit}>
-          <FormInput labelText='Email / Usuário' type='text' name='email' {...login} />
-          {loading
-            ? <Button disabled >Enviando...</Button>
-            : <Button>Enviar Email</Button>
-          }
+        : <form onSubmit={handleSubmit(onSubmit)}>
+          <FormInput
+            label='Email / Usuário'
+            type='text'
+            error={errors.email?.message}
+            {...register('email')}
+          />
+
         </form>
       }
 
