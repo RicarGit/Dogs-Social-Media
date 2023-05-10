@@ -1,5 +1,26 @@
 import { z } from "zod"
-import { FieldValues, UseFormRegister } from "react-hook-form"
+
+const usernameSchema = z.object({
+  username: z.string()
+    .nonempty('Digite um nome de usuário.')
+    .toLowerCase()
+    .trim()
+    .min(3, 'Utilize no mínimo 3 caracteres.')
+    .max(10, 'Utilize no máximo 10 caracteres.')
+})
+
+export const passwordSchema = z.object({
+  password: z.string()
+    .nonempty('Digite uma senha.')
+    .toLowerCase()
+    .trim()
+    .min(3, 'Utilize no mínimo 3 caracteres.')
+    .max(10, 'Utilize no máximo 10 caracteres.')
+})
+
+export const emailSchema = z.object({
+  email: z.string().email('Digite um email válido.')
+})
 
 const formInputSchema = z.object({
   name: z.string(),
@@ -8,25 +29,6 @@ const formInputSchema = z.object({
   error: z.string().or(z.undefined())
 }).required()
 
-export const loginFormSchema = z.object({
-  username: z.string()
-    .nonempty('Digite algum valor.')
-    .toLowerCase()
-    .trim()
-    .min(3, 'Utilize no mínimo 3 caracteres.')
-    .max(10, 'Utilize no máximo 10 caracteres.'),
-  password: z.string()
-    .nonempty('Digite algum valor.')
-    .toLowerCase()
-    .trim()
-    .min(3, 'Utilize no mínimo 3 caracteres.')
-    .max(10, 'Utilize no máximo 10 caracteres.')
-})
-
-export const loginCreateSchema = loginFormSchema.extend({
-  email: z.string().email('Digite um email válido.')
-})
-
 export const photoPostSchema = z.object({
   name: z.string(),
   weight: z.number(),
@@ -34,8 +36,19 @@ export const photoPostSchema = z.object({
   image: z.instanceof(FileList)
 })
 
-export type RegisterType<T extends FieldValues> = ReturnType<UseFormRegister<T>>
+export const loginFormSchema = passwordSchema.merge(usernameSchema)
+export const loginCreateSchema = loginFormSchema.merge(emailSchema)
+
 export type FormInputProps = z.infer<typeof formInputSchema>
+export type FormPasswordType = z.infer<typeof passwordSchema>
+export type FormEmailType = z.infer<typeof emailSchema>
 export type LoginFormType = z.infer<typeof loginFormSchema>
 export type LoginCreateFormType = z.infer<typeof loginCreateSchema>
 export type PhotoPostFormType = z.infer<typeof photoPostSchema>
+
+export type FormInputTypes =
+  | FormPasswordType
+  | FormEmailType
+  | LoginFormType
+  | LoginCreateFormType
+  | PhotoPostFormType 

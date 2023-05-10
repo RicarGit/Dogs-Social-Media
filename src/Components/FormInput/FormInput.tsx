@@ -1,8 +1,13 @@
 import * as S from './FormInput.styled'
 import { forwardRef } from 'react'
-import { LoginFormType, LoginCreateFormType, FormInputProps, RegisterType, PhotoPostFormType } from 'types/formTypes'
 
-export const FormInput = forwardRef<HTMLInputElement, FormInputProps & RegisterType<LoginFormType | LoginCreateFormType | PhotoPostFormType>>(
+import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FormInputProps, FormInputTypes } from 'types/formTypes'
+
+type RegisterType<T extends FieldValues> = ReturnType<UseFormRegister<T>>
+type InputProps = FormInputProps & RegisterType<FormInputTypes>
+
+export const FormInput = forwardRef<HTMLInputElement, InputProps>(
   ({ label, type, error, name, onChange, onBlur }, ref) => {
     return (
       <S.InputContainer>
