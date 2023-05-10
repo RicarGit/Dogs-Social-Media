@@ -2,12 +2,12 @@ import { useCallback } from 'react'
 
 import { api } from 'services/api'
 import { useFetch } from 'hooks'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useContextStore } from 'contexts/useContextStore'
+import { LoginCreateFormType, loginCreateSchema } from 'types/formTypes'
 
 import { Head, Button, FormInput, ErrorInfo } from 'Components'
-import { useForm } from 'react-hook-form'
-import { LoginCreateFormType, loginCreateSchema } from 'types/formTypes'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 export const LoginCreate = () => {
   const { loading, error, request } = useFetch()
@@ -17,11 +17,11 @@ export const LoginCreate = () => {
     resolver: zodResolver(loginCreateSchema)
   })
 
-  const onSubmit = async (data: LoginCreateFormType) => {
+  const onSubmit = async ({ username, password, email }: LoginCreateFormType) => {
     const userData = {
-      username: data.username,
-      password: data.password,
-      email: data.email
+      username,
+      password,
+      email
     }
     const { url, options } = api.USER_POST(userData)
 
@@ -29,7 +29,7 @@ export const LoginCreate = () => {
       const { response } = await request(url, options)
 
       if (response?.ok) {
-        userLogin(data.username, data.password)
+        userLogin(username, password)
       }
     } catch (error) {
       console.error(error)

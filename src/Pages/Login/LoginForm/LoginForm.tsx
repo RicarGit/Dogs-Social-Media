@@ -1,7 +1,7 @@
 import * as S from './LoginForm.styled'
 import { useCallback } from 'react'
-import { Link } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginFormType, loginFormSchema } from 'types/formTypes'
@@ -18,8 +18,8 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema)
   })
 
-  const onSubmit = (data: LoginFormType) => {
-    userLogin(data.username, data.password)
+  const onSubmit = ({ username, password }: LoginFormType) => {
+    userLogin(username, password)
   }
 
   return (
