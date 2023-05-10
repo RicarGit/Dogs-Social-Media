@@ -50,6 +50,7 @@ export const LoginPasswordReset = () => {
           {...register('password')}
         />
 
+        <Button disabled={loading}>{loading ? 'Resetando...' : 'Resetar'}</Button>
       </form>
 
       <ErrorInfo error={error} />

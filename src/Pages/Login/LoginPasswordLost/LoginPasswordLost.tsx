@@ -36,6 +36,7 @@ export const LoginPasswordLost = () => {
             {...register('email')}
           />
 
+          <Button disabled={loading}>{loading ? 'Enviando...' : 'Enviar Email'}</Button>
         </form>
       }
 
