@@ -30,5 +30,7 @@ export const FormsContainer = styled.div`
 
   @media (max-width: 50rem) {
     max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 `
