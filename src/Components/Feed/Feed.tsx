@@ -1,3 +1,4 @@
+import * as S from './Feed.styled'
 import { useEffect, useState, useCallback } from "react"
 import { PhotoInfo, SetModal } from "types"
 
@@ -54,9 +55,9 @@ export const Feed = ({ user }: UserId) => {
         <FeedPhotos key={page} setModal={setModal} user={user} page={page} finalPage={finalPage} />
       )}
       {!hasMorePages &&
-        <p style={{ margin: '70px 0', color: '#333', textAlign: 'center' }}>
+        <S.FeedMessage>
           Oops! Não existem mais postagens.
-        </p>}
+        </S.FeedMessage>}
     </>
   )
 }
