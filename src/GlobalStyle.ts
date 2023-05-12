@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 1.5rem;
     background-color: #fb1;
     position: absolute;
-    bottom: 5px;
+    top: 19px;
     left: -5px;
     border-radius: 0.2rem;
     z-index: -1;
