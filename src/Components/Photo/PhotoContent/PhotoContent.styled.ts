@@ -36,7 +36,7 @@ export const Details = styled.div`
   padding: ${({ single }: Single) => single ? "1rem 0 0 0" : "2rem 2rem 0 2rem"};
 
   @media (max-width: 500px) {
-    padding: ${({ single }: Single) => single ? "0" : "1rem 1rem 0 1rem"};
+    padding: ${({ single }: Single) => single ? "1rem 0 0 0" : "1rem 1rem 0 1rem"};
   }
 `
 
