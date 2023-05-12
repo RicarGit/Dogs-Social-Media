@@ -23,6 +23,8 @@ export const FeedPhotosItem = styled.li`
   }
 
   @media (max-width: 40rem) {
+    border-radius: 0;
+    
     &:nth-child(2) {
       grid-column: initial;
       grid-row: initial;

@@ -22,7 +22,7 @@ export const Skeleton = styled.div`
       background-position: -200%;
     }
   }
-  `
+`
 
 export const LoadedImage = styled.img`
   grid-area: 1/1;
@@ -31,4 +31,8 @@ export const LoadedImage = styled.img`
   opacity: 0;
   transition: .2s;
   border-radius: .4rem;
+
+  @media (max-width: 40rem) {
+    border-radius: 0;
+  }
 `
