@@ -6,7 +6,7 @@ export const PhotoComments = styled.ul`
   word-break: break-all;
   padding: ${({ single }: Single) => single ? "0" : "2rem"};
 
-  @media (max-width: 500px) {
+  @media (max-width: 40rem) {
     padding: ${({ single }: Single) => single ? "0" : "1rem"};
   }
 `

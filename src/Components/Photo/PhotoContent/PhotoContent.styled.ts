@@ -35,7 +35,7 @@ export const PhotoContent = styled.div`
 export const Details = styled.div`
   padding: ${({ single }: Single) => single ? "1rem 0 0 0" : "2rem 2rem 0 2rem"};
 
-  @media (max-width: 500px) {
+  @media (max-width: 40rem) {
     padding: ${({ single }: Single) => single ? "1rem 0 0 0" : "1rem 1rem 0 1rem"};
   }
 `
