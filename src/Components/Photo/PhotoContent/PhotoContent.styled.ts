@@ -24,10 +24,10 @@ export const PhotoContent = styled.div`
     }
 
     @media (max-width: 64rem) {
+      display: block;
       height: auto;
       max-height: calc(100vh - 4rem);
       overflow-y: auto;
-      grid-template-columns: minmax(20rem, 40rem);
     }
   `}
 `
