@@ -6,6 +6,7 @@ export const UserHeader = styled.header`
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  padding: 0 1rem;
   position: relative;
 `
 

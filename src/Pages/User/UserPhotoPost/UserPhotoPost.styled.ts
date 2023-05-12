@@ -15,8 +15,12 @@ export const UserPhotoPostSection = styled.section`
   }
 `
 
+export const UserPhotoForm = styled.form`
+  padding: 0 1rem;
+`
+
 export const InputFile = styled.input`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 export const ImagePreview = styled.img<Preview>`

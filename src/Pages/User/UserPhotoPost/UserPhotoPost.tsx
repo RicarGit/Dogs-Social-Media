@@ -55,7 +55,7 @@ export const UserPhotoPost = () => {
   return (
     <S.UserPhotoPostSection className='animeLeft'>
       <Head title='Poste sua foto' />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <S.UserPhotoForm onSubmit={handleSubmit(onSubmit)}>
         <FormInput label='Nome' type='text' error={errors.name?.message} {...register('name')} />
         <FormInput label='Peso' type='number' error={errors.name?.message} {...register('weight')} />
         <FormInput label='Idade' type='number' error={errors.name?.message} {...register('age')} />
@@ -63,7 +63,7 @@ export const UserPhotoPost = () => {
 
         <Button disabled={loading}>{loading ? 'Enviando...' : 'Enviar'}</Button>
         <ErrorInfo error={error} />
-      </form>
+      </S.UserPhotoForm>
 
       {img.preview && <S.ImagePreview preview={img.preview} alt='' />}
     </S.UserPhotoPostSection>
