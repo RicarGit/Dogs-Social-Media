@@ -6,6 +6,7 @@ export const Home = styled.section`
   margin: 2rem auto 0 auto;
 
   @media (max-width: 40rem) {
+    margin-top: 0;
     padding: 0;
   }
 `

@@ -6,6 +6,11 @@ export const Footer = styled.footer`
   padding: 3rem 1rem 0 1rem;
   text-align: center;
   color: #764701;
+
+  @media (max-width: 40rem) {
+    height: 8rem;
+    padding: 2rem;
+  }
 `
 
 export const FooterCopyright = styled.p`
