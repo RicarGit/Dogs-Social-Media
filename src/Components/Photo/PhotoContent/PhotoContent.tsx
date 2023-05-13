@@ -18,7 +18,7 @@ export const PhotoContent = ({ commentsData, single }: CommentsData & Single) =>
       <S.Details single={single}>
         <S.Author>
           {data && data.username === photo.author
-            ? <PhotoDelete userId={data.id} />
+            ? <PhotoDelete userId={photo.id} />
             : <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
           }
           <S.Views>{photo.acessos}</S.Views>

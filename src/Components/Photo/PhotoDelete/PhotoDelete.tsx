@@ -4,7 +4,7 @@ import { useFetch } from 'hooks/useFetch'
 import { api } from 'services/api'
 
 interface UserId {
-  userId: string
+  userId: number
 }
 
 export const PhotoDelete = ({ userId }: UserId) => {

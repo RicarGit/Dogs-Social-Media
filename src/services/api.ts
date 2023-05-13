@@ -116,7 +116,7 @@ export const api = {
       },
     }
   },
-  PHOTO_DELETE: (id: string, token: string) => {
+  PHOTO_DELETE: (id: number, token: string) => {
     return {
       url: `${API_URL}/api/photo/${id}`,
       options: {
