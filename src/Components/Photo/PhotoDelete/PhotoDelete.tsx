@@ -27,11 +27,8 @@ export const PhotoDelete = ({ userId }: UserId) => {
   }
 
   return (
-    <>
-      {loading
-        ? <S.PhotoDelete disabled >Deletando...</S.PhotoDelete >
-        : <S.PhotoDelete onClick={handleClick} >Deletar</S.PhotoDelete >
-      }
-    </>
+    <S.PhotoDelete disabled={loading} onClick={handleClick}>
+      {loading ? 'Deletando...' : 'Deletar'}
+    </S.PhotoDelete>
   )
 }
