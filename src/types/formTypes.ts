@@ -6,7 +6,7 @@ const usernameSchema = z.object({
     .toLowerCase()
     .trim()
     .min(3, 'Utilize no mínimo 3 caracteres.')
-    .max(10, 'Utilize no máximo 10 caracteres.')
+    .max(30, 'Utilize no máximo 10 caracteres.')
 })
 
 export const passwordSchema = z.object({
@@ -15,7 +15,7 @@ export const passwordSchema = z.object({
     .toLowerCase()
     .trim()
     .min(3, 'Utilize no mínimo 3 caracteres.')
-    .max(10, 'Utilize no máximo 10 caracteres.')
+    .max(15, 'Utilize no máximo 10 caracteres.')
 })
 
 export const emailSchema = z.object({
