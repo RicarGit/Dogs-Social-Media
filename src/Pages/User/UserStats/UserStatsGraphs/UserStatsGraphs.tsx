@@ -49,7 +49,8 @@ const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
             data: {
               fillOpacity: .9,
               stroke: '#fb1',
-              strokeWidth: 2.5
+              strokeWidth: 2.5,
+              pointerEvents: 'none'
             },
             labels: {
               fontSize: 14,
@@ -60,10 +61,11 @@ const UserStatsGraphs = ({ data }: UserGraphsInfo) => {
       </S.GraphContainer>
 
       <S.GraphContainer>
-        <VictoryChart>
+        <VictoryChart style={{ parent: { touchAction: 'initial' } }}>
           <VictoryBar
             data={graph.length ? graph : undefined}
             alignment='start'
+            barWidth={25}
             style={{
               data: {
                 fill: '#fb1'
