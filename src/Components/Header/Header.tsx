@@ -14,10 +14,10 @@ export const Header = () => {
         <Link className="logo" to="/" aria-label="Dogs - Home">
           <Dogs />
         </Link>
-        {data && login
-          ? <Link className="login" to="/login">{data.username}</Link>
-          : <Link className="login" to="/login">Login / Criar</Link>
-        }
+
+        <Link className="login" to="/login">
+          {(data && login) ? data.username : 'Login / Criar'}
+        </Link>
       </S.Navigation>
     </S.Header>
   )
